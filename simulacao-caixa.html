@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), interest-cohort=()">
+  <meta name="description" content="Entenda os serviços imobiliários e acesse o simulador habitacional oficial da Caixa.">
+  <title>Simulação Caixa | Financiamento imobiliário</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    a { text-decoration:none; }
+    .container { width:min(1100px, calc(100% - 32px)); margin:0 auto; }
+    .topbar { background:#0a1427; color:#dfeaf8; font-size:0.8rem; padding:0.7rem 0; }
+    .topbar .container { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    .topbar strong { color:#fff; }
+    header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.96); backdrop-filter:blur(8px); border-bottom:1px solid rgba(15,23,42,0.06); }
+    .navbar { display:flex; align-items:center; justify-content:space-between; min-height:78px; gap:1rem; }
+    .logo { font-size:1.6rem; font-weight:800; color:var(--primary); letter-spacing:-0.04em; }
+    .logo span { color:var(--accent); }
+    .back-link { color:var(--primary-soft); font-weight:700; }
+    .back-link:hover { color:var(--accent-dark); }
+    .page-nav { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; list-style:none; }
+    .page-nav a { color:var(--primary-soft); font-weight:600; }
+    .page-nav a:hover { color:var(--accent-dark); }
+    .hero { background:linear-gradient(120deg, rgba(15,23,42,0.94), rgba(3,105,161,0.78)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; color:#fff; padding:5rem 0 4rem; }
+    .eyebrow { display:inline-flex; gap:0.5rem; align-items:center; padding:0.45rem 0.85rem; border-radius:999px; background:rgba(255,255,255,0.14); color:#e0f2fe; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:1rem; }
+    .hero h1 { font-size:clamp(2.2rem, 4vw, 4rem); line-height:1.08; letter-spacing:-0.04em; margin-bottom:1rem; max-width:760px; }
+    .hero p { color:rgba(255,255,255,0.84); max-width:720px; font-size:1.1rem; }
+    .section { padding:4rem 0; }
+    .section-head { text-align:center; margin-bottom:2rem; }
+    .section-head h2 { font-size:clamp(2rem, 3vw, 2.8rem); letter-spacing:-0.04em; margin-bottom:0.7rem; }
+    .section-head p { max-width:740px; color:var(--muted); margin:0 auto; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.3rem; }
+    .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.4rem; box-shadow:var(--shadow); }
+    .icon { width:52px; height:52px; display:inline-flex; align-items:center; justify-content:center; background:rgba(14,165,233,0.12); color:var(--accent-dark); border-radius:14px; font-size:1.3rem; margin-bottom:1rem; }
+    .box h3 { margin-bottom:0.5rem; }
+    .box p { color:var(--muted); }
+    .steps { display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem; counter-reset:step; }
+    .step { position:relative; background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.4rem; }
+    .step-number { width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:800; margin-bottom:0.8rem; }
+    .step h3 { margin-bottom:0.4rem; }
+    .step p { color:var(--muted); font-size:0.95rem; }
+    .notice { display:flex; gap:1rem; align-items:flex-start; background:#ecfdf5; border:1px solid #bbf7d0; border-radius:16px; padding:1.3rem; color:#14532d; }
+    .notice i { margin-top:0.25rem; }
+    .cta { background:linear-gradient(135deg, var(--primary), #183966); color:#fff; border-radius:20px; padding:2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+    .cta p { color:rgba(255,255,255,0.8); margin-top:0.4rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:0.6rem; padding:0.9rem 1.3rem; border-radius:12px; font-weight:700; border:0; cursor:pointer; }
+    .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
+    .btn-light { background:#fff; color:var(--primary); }
+    footer { background:#091421; color:rgba(255,255,255,0.8); padding:3rem 0 2rem; margin-top:4rem; }
+    .footer-content { display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    footer h4 { color:#fff; margin-bottom:0.5rem; }
+    footer p { max-width:520px; }
+    .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.3rem; text-align:center; font-size:0.9rem; }
+    @media (max-width:760px) {
+      .steps { grid-template-columns:1fr 1fr; }
+      .cta { flex-direction:column; align-items:flex-start; }
+    }
+    @media (max-width:480px) {
+      .steps { grid-template-columns:1fr; }
+      .hero { padding-top:3.5rem; }
+    }
+    body, body * { user-select: none; }
+    img, video { -webkit-user-drag: none; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>Orientação imobiliária</span>
+      <span>Itapeva e região</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <a href="Inicio.html" class="logo">Seu <span>Empreendimento</span></a>
+      <a href="Inicio.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
+    </div>
+  </header>
+
+      <a href="Inicio.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Início</a>
+      <ul class="page-nav">
+        <li><a href="empreendimentos.html">Comprar</a></li>
+        <li><a href="Inicio.html#terrenos">Terreno financiável</a></li>
+        <li><a href="terreno-construcao.html">Terreno + construção</a></li>
+        <li><a href="financiamento.html">Financiamento</a></li>
+        <li><a href="engenharia.html">Engenharia</a></li>
+        <li><a href="Inicio.html#sobre">Sobre nós</a></li>
+      </ul>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow"><i class="fa-solid fa-calculator"></i> Simulação habitacional</div>
+        <h1>Entenda suas opções antes de comprar.</h1>
+        <p>Veja para que serve cada serviço e acesse o simulador oficial da Caixa para estimar parcelas, entrada e prazo do financiamento.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>O que cada opção significa</h2>
+          <p>Escolha o caminho que combina com o seu objetivo imobiliário.</p>
+        </div>
+        <div class="grid">
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-house"></i></div>
+            <h3>Imóveis</h3>
+            <p>Casas, apartamentos, imóveis comerciais e empreendimentos prontos ou em lançamento.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3>Terreno com construção</h3>
+            <p>Une a compra do terreno ao planejamento e à construção de um imóvel adequado ao seu projeto.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
+            <h3>Consultoria de financiamento</h3>
+            <p>Ajuda a entender renda, entrada, documentos, prazo e condições antes de solicitar o crédito.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3>Engenharia</h3>
+            <p>Avalia projeto, terreno, custos e viabilidade técnica para a obra acontecer com mais segurança.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Simule diretamente no site oficial da Caixa</h2>
+            <p>A simulação é gratuita e ajuda a estimar o poder de compra para terreno com construção e imóveis em geral.</p>
+          </div>
+          <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+            <a class="btn btn-light" href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir simulador Caixa
+            </a>
+            <a class="btn btn-primary" href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> Consultar pelo WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Sobre o simulador de poder de compra</h2>
+          <p>Ele usa os dados preenchidos para apresentar uma estimativa de entrada e parcelas para terrenos com construção e imóveis em geral.</p>
+        </div>
+        <div class="grid">
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-file-pen"></i></div>
+            <h3>Dados preenchidos</h3>
+            <p>O resultado depende das informações inseridas, como renda, localização, valor do imóvel, entrada e prazo.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-coins"></i></div>
+            <h3>Entrada estimada</h3>
+            <p>O simulador apresenta uma base do valor que pode ser necessário para iniciar a compra do terreno ou imóvel.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <h3>Parcelas estimadas</h3>
+            <p>Você visualiza uma previsão de parcelas para entender se o financiamento cabe no seu planejamento.</p>
+          </article>
+          <article class="box">
+            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Análise da Caixa</h3>
+            <p>A entrada e as parcelas exatas só são definidas depois da análise de crédito e aprovação da Caixa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Como fazer a simulação</h2>
+          <p>Tenha uma estimativa mais útil preenchendo os dados com atenção.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>Abra o simulador</h3>
+            <p>Clique no botão acima e confirme que está no endereço oficial da Caixa.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>Escolha o objetivo</h3>
+            <p>Informe se deseja comprar um imóvel, terreno, construir ou usar outra modalidade disponível.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>Preencha seus dados</h3>
+            <p>Informe localização, valor aproximado, entrada, renda familiar e prazo desejado.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">4</div>
+            <h3>Analise o resultado</h3>
+            <p>Use a entrada e as parcelas como base de planejamento. Os valores finais dependem da análise da Caixa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <p><strong>Importante:</strong> a simulação é apenas uma estimativa. A aprovação depende da análise de crédito, da documentação, da renda e das regras vigentes da Caixa. Não envie senhas ou códigos pessoais para terceiros.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <h4>Atendimento imobiliário</h4>
+        <p>Imóveis, terrenos, construção, financiamento e engenharia em Itapeva e região.</p>
+      </div>
+      <a href="Inicio.html" class="btn btn-primary">Voltar ao início</a>
+    </div>
+    <div class="container copy">© 2026</div>
+  </footer>
+  <script>
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+    document.addEventListener('dragstart', (event) => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'u', 's', 'p'].includes(key)) event.preventDefault();
+      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i', 'j', 'c'].includes(key))) event.preventDefault();
+    });
+  </script>
+</body>
+</html>
