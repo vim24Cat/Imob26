@@ -19,37 +19,93 @@
     img { max-width:100%; display:block; }
     .container { width:min(1200px, calc(100% - 32px)); margin:0 auto; }
 
-    .topbar { background:#0a1427; color:#dfeaf8; font-size:0.8rem; padding:0.7rem 0; }
-    .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+    /* ============ TOPO INTEGRADO AO HERO (mesmo prédio) ============ */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(120deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.72) 50%, rgba(15,23,42,0.55) 100%),
+        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      padding: 2rem 0 5rem;
+    }
 
-    header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.96); backdrop-filter:blur(8px); border-bottom:1px solid rgba(15,23,42,0.06); }
-    .navbar { display:flex; align-items:center; justify-content:space-between; min-height:78px; gap:1rem; }
-    .logo { font-size:1.6rem; font-weight:800; color:var(--primary); letter-spacing:-0.04em; }
-    .logo span { color:var(--accent); }
-    .nav { display:flex; list-style:none; gap:1.2rem; flex-wrap:wrap; }
-    .nav a { color:var(--primary-soft); font-weight:600; font-size:0.95rem; }
-    .nav a:hover { color:var(--accent); }
+    /* Topo com botão Menu flutuando sobre a imagem */
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+    .top-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .top-brand i {
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
 
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; border-radius:12px; font-weight:700; border:none; cursor:pointer; transition:.2s ease; }
-    .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
-    .btn-primary:hover { transform:translateY(-1px); }
-    .btn-light { background:#fff; color:var(--primary); }
-    .btn-light:hover { background:#f1f5f9; }
+    /* Menu minimizado (sempre) */
+    .menu-dropdown { position: relative; display: block; }
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 0.85rem 1.3rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .menu-toggle:hover { background: rgba(255,255,255,0.22); }
+    .menu-toggle i { transition: transform .25s ease; }
+    .menu-dropdown.open .menu-toggle i { transform: rotate(90deg); }
 
-    .menu-dropdown { display:none; position:relative; }
-    .menu-toggle { display:inline-flex; align-items:center; gap:0.6rem; background:var(--primary); color:#fff; border:none; border-radius:12px; padding:0.8rem 1.2rem; font-weight:700; cursor:pointer; }
-    .menu-options { position:absolute; right:0; top:calc(100% + 12px); min-width:260px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:0.6rem; display:none; z-index:25; }
-    .menu-dropdown.open .menu-options { display:block; }
-    .menu-options a { display:block; padding:0.8rem 0.9rem; border-radius:10px; color:var(--primary-soft); font-weight:600; }
-    .menu-options a:hover { background:rgba(14,165,233,0.08); color:var(--accent-dark); }
+    .menu-options {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 12px);
+      min-width: 280px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 0.6rem;
+      display: none;
+      z-index: 25;
+      animation: menuFade .18s ease;
+    }
+    .menu-dropdown.open .menu-options { display: block; }
+    @keyframes menuFade { from { opacity:0; transform: translateY(-6px);} to { opacity:1; transform: translateY(0);} }
 
-    .hero { position:relative; isolation:isolate; overflow:hidden; background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; color:#fff; padding:5rem 0 4rem; }
-    .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(120deg, rgba(15,23,42,0.88), rgba(15,23,42,0.58)); z-index:-1; }
-    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+    .menu-options a {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.85rem 0.95rem; border-radius: 10px;
+      color: var(--primary-soft); font-weight: 600; font-size: 0.95rem;
+      transition: background .15s ease, color .15s ease;
+    }
+    .menu-options a:hover { background: rgba(14,165,233,0.08); color: var(--accent-dark); }
+    .menu-options a i { width: 18px; text-align: center; color: var(--accent-dark); }
+    .menu-options .divider { height:1px; background: var(--line); margin: 0.4rem 0.3rem; }
+
+    /* Conteúdo do hero */
     .hero-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; }
     .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 0.85rem; border-radius:999px; background:rgba(255,255,255,0.12); color:#dfeafe; font-size:0.8rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; }
     .hero h1 { font-size:clamp(2.3rem, 4vw, 4rem); line-height:1.08; margin-bottom:1rem; letter-spacing:-0.04em; }
-    .hero p { color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:620px; margin-bottom:2rem; }
+    .hero p { color:rgba(255,255,255,0.85); font-size:1.1rem; max-width:620px; margin-bottom:2rem; }
     .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
     .stats { display:flex; gap:1.5rem; flex-wrap:wrap; }
     .stat { min-width:120px; }
@@ -61,6 +117,13 @@
     select, input { width:100%; padding:0.9rem 1rem; border:1px solid var(--line); border-radius:10px; background:#f9fbff; font-size:0.95rem; color:var(--text); }
     .search-grid .wide { grid-column:1 / -1; }
 
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; border-radius:12px; font-weight:700; border:none; cursor:pointer; transition:.2s ease; }
+    .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
+    .btn-primary:hover { transform:translateY(-1px); }
+    .btn-light { background:#fff; color:var(--primary); }
+    .btn-light:hover { background:#f1f5f9; }
+
+    /* ============ SEÇÕES ============ */
     .section { padding:5rem 0; }
     .section-head { text-align:center; margin-bottom:2.5rem; }
     .section-head h2 { font-size:clamp(2rem, 3vw, 2.8rem); letter-spacing:-0.04em; margin-bottom:0.75rem; }
@@ -144,125 +207,110 @@
 
     .whatsapp-btn { position:fixed; right:22px; bottom:22px; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#25d366; color:#fff; box-shadow:0 16px 26px rgba(37,211,102,0.35); z-index:30; font-size:1.6rem; }
 
-    @media (max-width: 1000px) {
-      .nav { display:none; }
-      .menu-dropdown { display:block; }
-    }
-    @media (max-width: 900px) {
+    @media (max-width:900px) {
       .hero-grid, .split, .footer-grid { grid-template-columns:1fr; }
       .about-grid { grid-template-columns:1fr; }
       .cta { flex-direction:column; align-items:flex-start; }
       .featured-layout { grid-template-columns:1fr; }
+      .top { margin-bottom: 2.5rem; }
     }
-    @media (max-width: 700px) {
+    @media (max-width:700px) {
       .search-grid { grid-template-columns:1fr; }
       .section { padding:4rem 0; }
+      .menu-options { right:0; left:0; min-width:auto; }
     }
     body, body * { user-select:none; }
     img, video { -webkit-user-drag:none; }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container">
-      <span>Empreendimentos, terrenos e financiamento</span>
-      <span>📍 Itapeva e região</span>
-    </div>
-  </div>
-
-  <header>
-    <div class="container navbar">
-      <a href="index.html" class="logo">RC <span>Almeida</span></a>
-      <ul class="nav">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="empreendimentos.html">Comprar</a></li>
-        <li><a href="index.html#terrenos">Terreno financiável</a></li>
-        <li><a href="terreno-construcao.html">Terreno + construção</a></li>
-        <li><a href="financiamento.html">Financiamento</a></li>
-        <li><a href="engenharia.html">Engenharia</a></li>
-        <li><a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">Simular poder de compra</a></li>
-        <li><a href="index.html#sobre">Sobre nós</a></li>
-      </ul>
-      <a href="index.html#contato" class="btn btn-primary">Contato</a>
-
-      <div class="menu-dropdown" id="menuDropdown">
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuOptions">
-          <i class="fa-solid fa-bars"></i> Menu
-        </button>
-        <div class="menu-options" id="menuOptions">
-          <a href="index.html">Início</a>
-          <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-          <a href="index.html#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
-          <a href="terreno-construcao.html"><i class="fa-solid fa-house"></i> Terreno + construção</a>
-          <a href="financiamento.html"><i class="fa-solid fa-building-columns"></i> Financiamento</a>
-          <a href="engenharia.html"><i class="fa-solid fa-helmet-safety"></i> Engenharia</a>
-          <a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-calculator"></i> Simular poder de compra</a>
-          <a href="index.html#sobre"><i class="fa-solid fa-users"></i> Sobre nós</a>
-          <a href="index.html#contato"><i class="fa-solid fa-phone"></i> Contato</a>
-        </div>
-      </div>
-    </div>
-  </header>
 
   <main id="inicio">
+    <!-- ============ TOPO + HERO integrados sobre a imagem do prédio ============ -->
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" aria-hidden="true">
-        <source src="Videos/Video Empresarial.mp4" type="video/mp4">
-      </video>
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Atuação em Itapeva e região</div>
-          <h1>Empreendimentos com potencial e segurança.</h1>
-          <p>Terrenos, construção, financiamento e engenharia para quem quer investir com mais confiança na região de Itapeva.</p>
-          <div class="hero-actions">
-            <a href="empreendimentos.html" class="btn btn-primary">Ver opções</a>
-            <a href="financiamento.html" class="btn btn-light">Financiamento</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><strong>+120</strong><span>Projetos</span></div>
-            <div class="stat"><strong>+18</strong><span>Anos de atuação</span></div>
-            <div class="stat"><strong>4,9/5</strong><span>Clientes</span></div>
+      <div class="container">
+        <!-- Topo com botão Menu flutuando sobre a imagem -->
+        <div class="top">
+          <a href="index.html" class="top-brand">
+            <i class="fa-solid fa-building"></i> 
+          </a>
+
+          <div class="menu-dropdown" id="menuDropdown">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuOptions">
+              <i class="fa-solid fa-bars"></i> Menu
+            </button>
+            <nav class="menu-options" id="menuOptions">
+              <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+              <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+              <a href="index.html#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
+              <a href="terreno-construcao.html"><i class="fa-solid fa-house-chimney"></i> Terreno + construção</a>
+              <a href="financiamento.html"><i class="fa-solid fa-building-columns"></i> Financiamento</a>
+              <a href="engenharia.html"><i class="fa-solid fa-helmet-safety"></i> Engenharia</a>
+              <div class="divider"></div>
+              <a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-calculator"></i> Simular poder de compra</a>
+              <a href="index.html#sobre"><i class="fa-solid fa-users"></i> Sobre nós</a>
+              <a href="index.html#contato"><i class="fa-solid fa-phone"></i> Contato</a>
+            </nav>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="search-box">
-            <div class="search-grid">
-              <select>
-                <option>Tipo de imóvel</option>
-                <option>Empreendimento</option>
-                <option>Terreno + Construção</option>
-                <option>Residencial</option>
-                <option>Imóvel Comercial</option>
-              </select>
-              <select>
-                <option>Localização</option>
-                <option>Itapeva - SP</option>
-                <option>Região de Itapeva</option>
-                <option>Interior de São Paulo</option>
-                <option>Municípios próximos</option>
-              </select>
-              <select>
-                <option>Faixa de valor</option>
-                <option>Até R$ 300 mil</option>
-                <option>R$ 300 mil a 700 mil</option>
-                <option>R$ 700 mil a 1,5 mi</option>
-                <option>Acima de R$ 1,5 mi</option>
-              </select>
-              <select>
-                <option>Status</option>
-                <option>Disponível</option>
-                <option>Em construção</option>
-                <option>Pronto para morar</option>
-                <option>Lançamento</option>
-              </select>
-              <a href="empreendimentos.html" class="btn btn-primary wide">Buscar oportunidade</a>
+        <!-- Conteúdo do hero -->
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Atuação em Itapeva e região</div>
+            <h1>Empreendimentos com potencial e segurança.</h1>
+            <p>Terrenos, construção, financiamento e engenharia para quem quer investir com mais confiança na região de Itapeva.</p>
+            <div class="hero-actions">
+              <a href="empreendimentos.html" class="btn btn-primary">Ver opções</a>
+              <a href="financiamento.html" class="btn btn-light">Financiamento</a>
+            </div>
+            <div class="stats">
+              <div class="stat"><strong>+120</strong><span>Projetos</span></div>
+              <div class="stat"><strong>+18</strong><span>Anos de atuação</span></div>
+              <div class="stat"><strong>4,9/5</strong><span>Clientes</span></div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="search-box">
+              <div class="search-grid">
+                <select>
+                  <option>Tipo de imóvel</option>
+                  <option>Empreendimento</option>
+                  <option>Terreno + Construção</option>
+                  <option>Residencial</option>
+                  <option>Imóvel Comercial</option>
+                </select>
+                <select>
+                  <option>Localização</option>
+                  <option>Itapeva - SP</option>
+                  <option>Região de Itapeva</option>
+                  <option>Interior de São Paulo</option>
+                  <option>Municípios próximos</option>
+                </select>
+                <select>
+                  <option>Faixa de valor</option>
+                  <option>Até R$ 300 mil</option>
+                  <option>R$ 300 mil a 700 mil</option>
+                  <option>R$ 700 mil a 1,5 mi</option>
+                  <option>Acima de R$ 1,5 mi</option>
+                </select>
+                <select>
+                  <option>Status</option>
+                  <option>Disponível</option>
+                  <option>Em construção</option>
+                  <option>Pronto para morar</option>
+                  <option>Lançamento</option>
+                </select>
+                <a href="empreendimentos.html" class="btn btn-primary wide">Buscar oportunidade</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ============ EMPREENDIMENTOS EM DESTAQUE ============ -->
     <section class="section" id="empreendimentos">
       <div class="container">
         <div class="section-head">
@@ -369,6 +417,7 @@
       </div>
     </section>
 
+    <!-- ============ SERVIÇOS ============ -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -400,11 +449,12 @@
       </div>
     </section>
 
+    <!-- ============ SOBRE NÓS ============ -->
     <section class="section" id="sobre">
       <div class="container">
         <div class="section-head">
-          <h2>Equipe RC Almeida Soluções Imobiliárias</h2>
-          <p>Sobre nós: uma equipe que une experiência, organização e orientação para tornar o financiamento imobiliário mais claro e seguro.</p>
+          <h2>Sobre nós</h2>
+          <p>Uma equipe que une experiência, organização e orientação para tornar o financiamento imobiliário mais claro e seguro.</p>
         </div>
         <div class="about-grid">
           <article class="about-card">
@@ -425,6 +475,7 @@
       </div>
     </section>
 
+    <!-- ============ FINANCIAMENTO ============ -->
     <section class="section" id="financiamento">
       <div class="container split">
         <div class="info-box">
@@ -459,6 +510,7 @@
       </div>
     </section>
 
+    <!-- ============ TERRENOS ============ -->
     <section class="section" id="terrenos">
       <div class="container">
         <div class="section-head">
@@ -515,6 +567,39 @@
       </div>
     </section>
 
+    <!-- ============ PROCESSO / ENGENHARIA ============ -->
+    <section class="section" id="engenharia">
+      <div class="container">
+        <div class="section-head">
+          <h2>Planejamento e engenharia com visão de mercado</h2>
+          <p>Projetos pensados para entregar valor, funcionalidade e melhor retorno para sua compra ou investimento.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process">
+            <div class="step">1</div>
+            <h3>Diagnóstico</h3>
+            <p>Entendemos seu objetivo, orçamento e perfil para mapear a melhor oportunidade.</p>
+          </div>
+          <div class="process">
+            <div class="step">2</div>
+            <h3>Viabilidade</h3>
+            <p>Análise técnica, retorno financeiro e avaliação de risco antes da decisão.</p>
+          </div>
+          <div class="process">
+            <div class="step">3</div>
+            <h3>Negociação</h3>
+            <p>Estratégia para garantir melhor condição de compra, construção e financiamento.</p>
+          </div>
+          <div class="process">
+            <div class="step">4</div>
+            <h3>Entrega</h3>
+            <p>Acompanhamento completo até a contratação, obra ou entrega do imóvel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
     <section class="section">
       <div class="container">
         <div class="cta">
@@ -528,6 +613,7 @@
     </section>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer id="contato">
     <div class="container footer-grid">
       <div class="footer-col">
@@ -549,21 +635,9 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li>
-            <a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99703-8249
-            </a>
-          </li>
-          <li>
-            <a href="https://wa.me/5515998541107" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99854-1107
-            </a>
-          </li>
-          <li>
-            <a href="mailto:vendasimobimoveis@gmail.com">
-              <i class="fa-solid fa-envelope"></i> vendasimobimoveis@gmail.com
-            </a>
-          </li>
+          <li><a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99703-8249</a></li>
+          <li><a href="https://wa.me/5515998541107" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99854-1107</a></li>
+          <li><a href="mailto:vendasimobimoveis@gmail.com"><i class="fa-solid fa-envelope"></i> vendasimobimoveis@gmail.com</a></li>
           <li>📍 Itapeva - SP</li>
         </ul>
       </div>
@@ -576,14 +650,13 @@
   </a>
 
   <script>
-    const blockCasualCopy = (event) => {
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+    document.addEventListener('dragstart', (event) => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
       const key = event.key.toLowerCase();
       if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
       if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
-    };
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-    document.addEventListener('dragstart', (event) => event.preventDefault());
-    document.addEventListener('keydown', blockCasualCopy);
+    });
 
     const menuDropdown = document.getElementById('menuDropdown');
     const menuToggle = document.querySelector('.menu-toggle');
