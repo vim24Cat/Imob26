@@ -3,14 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    object-src 'none';
+    script-src 'self' 'nonce-INDEX2026SECURE';
+    style-src 'self' 'nonce-INDEX2026SECURE' https://cdnjs.cloudflare.com;
+    img-src 'self' data: https://*.pinimg.com https://*.unsplash.com https://images.unsplash.com;
+    font-src 'self' https://cdnjs.cloudflare.com data:;
+    media-src 'self';
+    connect-src 'self';
+    manifest-src 'self';
+    worker-src 'self';
+    upgrade-insecure-requests;
+    block-all-mixed-content;
+  ">
+
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
-  <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), interest-cohort=()">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+
   <title>Imóveis, financiamento e terrenos</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+
+  <style nonce="INDEX2026SECURE">
     :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --gold:#d4a441; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); --radius:18px; }
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
@@ -20,10 +48,7 @@
     .container { width:min(1200px, calc(100% - 32px)); margin:0 auto; }
 
     .hero {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      color: #fff;
+      position: relative; isolation: isolate; overflow: hidden; color: #fff;
       background:
         linear-gradient(120deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.72) 50%, rgba(15,23,42,0.55) 100%),
         url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -119,154 +144,34 @@
     .slider-dot { width:10px; height:10px; padding:0; border:0; border-radius:50%; background:#cbd5e1; cursor:pointer; }
     .slider-dot.active { background:var(--accent); }
 
-    /* ===== CARD "PROJETOS EM DESTAQUE" (lateral) ===== */
-    .featured-projects {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 22px 46px rgba(15,23,42,0.14);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-    .featured-projects-head {
-      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
-      color: #fff;
-      padding: 1rem 1.2rem;
-      text-align: center;
-    }
-    .featured-projects-head h3 {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .featured-projects-head p {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.75);
-    }
-
-    .projects-slider {
-      position: relative;
-      overflow: hidden;
-      flex-grow: 1;
-    }
-    .projects-track {
-      display: flex;
-      transition: transform 0.55s ease;
-    }
-    .projects-slide {
-      min-width: 100%;
-      padding: 0.8rem;
-    }
-    .project-mini {
-      background: #f8fbff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .project-mini-image {
-      height: 120px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-    .project-mini-image .tag {
-      top: 10px;
-      left: 10px;
-      padding: 0.3rem 0.6rem;
-      font-size: 0.65rem;
-    }
-    .project-mini-body {
-      padding: 0.85rem;
-    }
-    .project-mini-body h4 {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-      color: var(--primary);
-    }
-    .project-mini-body p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
-    }
-    .btn-mini {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 0.55rem 0.8rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: #fff;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-
-    .projects-control {
-      position: absolute;
-      top: 40%;
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(15,23,42,0.82);
-      color: #fff;
-      cursor: pointer;
-      z-index: 2;
-    }
+    .featured-projects { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 22px 46px rgba(15,23,42,0.14); overflow: hidden; display: flex; flex-direction: column; min-height: 100%; }
+    .featured-projects-head { background: linear-gradient(135deg, var(--primary), var(--primary-soft)); color: #fff; padding: 1rem 1.2rem; text-align: center; }
+    .featured-projects-head h3 { font-size: 1rem; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .featured-projects-head p { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+    .projects-slider { position: relative; overflow: hidden; flex-grow: 1; }
+    .projects-track { display: flex; transition: transform 0.55s ease; }
+    .projects-slide { min-width: 100%; padding: 0.8rem; }
+    .project-mini { background: #f8fbff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .project-mini-image { height: 120px; background-size: cover; background-position: center; position: relative; }
+    .project-mini-image .tag { top: 10px; left: 10px; padding: 0.3rem 0.6rem; font-size: 0.65rem; }
+    .project-mini-body { padding: 0.85rem; }
+    .project-mini-body h4 { font-size: 0.95rem; margin-bottom: 0.25rem; color: var(--primary); }
+    .project-mini-body p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.7rem; }
+    .btn-mini { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 0.55rem 0.8rem; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff; border-radius: 10px; font-weight: 700; font-size: 0.82rem; }
+    .projects-control { position: absolute; top: 40%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: rgba(15,23,42,0.82); color: #fff; cursor: pointer; z-index: 2; }
     .projects-control:hover { background: var(--accent-dark); }
     .projects-control.prev { left: 8px; }
     .projects-control.next { right: 8px; }
-
-    .projects-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.6rem 0 1rem;
-    }
-    .projects-dot {
-      width: 8px;
-      height: 8px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: #cbd5e1;
-      cursor: pointer;
-    }
+    .projects-dots { display: flex; justify-content: center; gap: 0.4rem; padding: 0.6rem 0 1rem; }
+    .projects-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #cbd5e1; cursor: pointer; }
     .projects-dot.active { background: var(--accent); }
 
-    /* ===== LINHA "CLIENTES ATENDIDOS" (embaixo) ===== */
-    .clients-row {
-      margin-top: 1.5rem;
-    }
-    .clients-row .featured-metric {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      padding: 1.5rem 2rem;
-      gap: 1.2rem;
-    }
-    .clients-row .featured-metric .icon-box {
-      margin-bottom: 0;
-      flex-shrink: 0;
-    }
-    .clients-row .featured-metric strong {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 0;
-    }
-    .clients-row .featured-metric h3 {
-      margin: 0;
-    }
-    .clients-row .featured-metric p {
-      margin: 0;
-      max-width: 520px;
-    }
+    .clients-row { margin-top: 1.5rem; }
+    .clients-row .featured-metric { flex-direction: row; align-items: center; justify-content: space-between; text-align: left; padding: 1.5rem 2rem; gap: 1.2rem; }
+    .clients-row .featured-metric .icon-box { margin-bottom: 0; flex-shrink: 0; }
+    .clients-row .featured-metric strong { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0; }
+    .clients-row .featured-metric h3 { margin: 0; }
+    .clients-row .featured-metric p { margin: 0; max-width: 520px; }
 
     .property-card { background:var(--card); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(15,23,42,0.06); box-shadow:var(--shadow); transition:transform .2s ease; }
     .property-card:hover { transform:translateY(-4px); }
@@ -336,13 +241,13 @@
       .section { padding:4rem 0; }
       .menu-options { right:0; left:0; min-width:auto; }
     }
-    body, body * { user-select:none; }
-    img, video { -webkit-user-drag:none; }
   </style>
 </head>
 <body>
 
   <main id="inicio">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="container">
         <div class="top">
@@ -423,8 +328,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ============ EMPREENDIMENTOS EM DESTAQUE ============ -->
+        <!-- EMPREENDIMENTOS EM DESTAQUE -->
     <section class="section" id="empreendimentos">
       <div class="container">
         <div class="section-head">
@@ -433,7 +337,6 @@
         </div>
 
         <div class="featured-layout">
-          <!-- SLIDER PRINCIPAL DE EMPREENDIMENTOS -->
           <div class="featured-slider" id="featuredSlider" aria-label="Fotos dos empreendimentos em destaque">
             <div class="featured-track">
               <div class="featured-slide">
@@ -521,7 +424,6 @@
             </div>
           </div>
 
-          <!-- CARD LATERAL: TERRENO + CONSTRUÇÃO -->
           <div class="featured-side">
             <article class="property-card">
               <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
@@ -536,7 +438,6 @@
             </article>
           </div>
 
-          <!-- CARD LATERAL: PROJETOS EM DESTAQUE (SLIDER) -->
           <div class="featured-projects">
             <div class="featured-projects-head">
               <h3>Projetos em destaque</h3>
@@ -631,7 +532,6 @@
           </div>
         </div>
 
-        <!-- CARD CLIENTES ATENDIDOS (agora embaixo) -->
         <div class="clients-row">
           <div class="featured-metric">
             <div class="icon-box"><i class="fa-solid fa-handshake"></i></div>
@@ -642,7 +542,8 @@
         </div>
       </div>
     </section>
-        <!-- ============ SERVIÇOS ============ -->
+
+    <!-- SERVIÇOS -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -674,7 +575,7 @@
       </div>
     </section>
 
-    <!-- ============ SOBRE NÓS ============ -->
+    <!-- SOBRE NÓS -->
     <section class="section" id="sobre">
       <div class="container">
         <div class="section-head">
@@ -700,7 +601,7 @@
       </div>
     </section>
 
-    <!-- ============ FINANCIAMENTO ============ -->
+    <!-- FINANCIAMENTO -->
     <section class="section" id="financiamento">
       <div class="container split">
         <div class="info-box">
@@ -734,8 +635,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ============ TERRENOS ============ -->
+        <!-- TERRENOS -->
     <section class="section" id="terrenos">
       <div class="container">
         <div class="section-head">
@@ -792,7 +692,7 @@
       </div>
     </section>
 
-    <!-- ============ PROCESSO / ENGENHARIA ============ -->
+    <!-- ENGENHARIA -->
     <section class="section" id="engenharia">
       <div class="container">
         <div class="section-head">
@@ -824,7 +724,7 @@
       </div>
     </section>
 
-    <!-- ============ CTA FINAL ============ -->
+    <!-- CTA FINAL -->
     <section class="section">
       <div class="container">
         <div class="cta">
@@ -838,7 +738,7 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER -->
   <footer id="contato">
     <div class="container footer-grid">
       <div class="footer-col">
@@ -874,34 +774,38 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <script>
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-    document.addEventListener('dragstart', (event) => event.preventDefault());
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
-      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
-    });
+  <script nonce="INDEX2026SECURE">
+    'use strict';
 
-    // Menu dropdown
-    const menuDropdown = document.getElementById('menuDropdown');
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuDropdown && menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = menuDropdown.classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(isOpen));
-      });
-      document.addEventListener('click', (event) => {
-        if (!menuDropdown.contains(event.target)) {
-          menuDropdown.classList.remove('open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
+    // ===== Menu dropdown =====
+    (function () {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuDropdown && menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = menuDropdown.classList.toggle('open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        document.addEventListener('click', (event) => {
+          if (!menuDropdown.contains(event.target)) {
+            menuDropdown.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            menuDropdown.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
 
-    // Slider de empreendimentos
-    const featuredSlider = document.getElementById('featuredSlider');
-    if (featuredSlider) {
+    // ===== Slider de empreendimentos =====
+    (function () {
+      const featuredSlider = document.getElementById('featuredSlider');
+      if (!featuredSlider) return;
+
       const featuredTrack = featuredSlider.querySelector('.featured-track');
       const featuredSlides = featuredSlider.querySelectorAll('.featured-slide');
       const featuredDots = featuredSlider.querySelectorAll('.slider-dot');
@@ -927,11 +831,13 @@
         dot.addEventListener('click', () => { showFeaturedSlide(dotIndex); startFeaturedSlider(); });
       });
       startFeaturedSlider();
-    }
+    })();
 
-    // Slider de projetos (lateral)
-    const projectsSlider = document.getElementById('projectsSlider');
-    if (projectsSlider) {
+    // ===== Slider de projetos (lateral) =====
+    (function () {
+      const projectsSlider = document.getElementById('projectsSlider');
+      if (!projectsSlider) return;
+
       const projectsTrack = projectsSlider.querySelector('.projects-track');
       const projectsSlides = projectsSlider.querySelectorAll('.projects-slide');
       const projectsDots = projectsSlider.querySelectorAll('.projects-dot');
@@ -955,11 +861,13 @@
         dot.addEventListener('click', () => { showProjectSlide(i); startProjectsSlider(); });
       });
       startProjectsSlider();
-    }
+    })();
 
-    // Contador de clientes
-    const clientsCount = document.getElementById('clientsCount');
-    if (clientsCount) {
+    // ===== Contador de clientes =====
+    (function () {
+      const clientsCount = document.getElementById('clientsCount');
+      if (!clientsCount) return;
+
       const targetClients = 350;
       let currentClients = 0;
       const countStep = Math.max(1, Math.ceil(targetClients / 40));
@@ -969,7 +877,7 @@
         if (currentClients < targetClients) requestAnimationFrame(countClients);
       };
       countClients();
-    }
+    })();
   </script>
 </body>
 </html>
