@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
@@ -11,807 +11,194 @@
   <title>Imóveis, financiamento e terrenos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #0f172a;
-      --primary-soft: #1e293b;
-      --accent: #0ea5e9;
-      --accent-dark: #0369a1;
-      --gold: #d4a441;
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #64748b;
-      --line: #dfe7f1;
-      --success: #16a34a;
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: #0a1427;
-      color: #dfeaf8;
-      font-size: 0.8rem;
-      padding: 0.7rem 0;
-    }
-
-    .topbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .topbar strong { color: #fff; }
-
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 20;
-      background: transparent;
-      border-bottom: 0;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 78px;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.04em;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 1.6rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .menu-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .menu-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 0.8rem 1.2rem;
-      font-size: 0.92rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
-    }
-
-    .menu-options {
-      position: absolute;
-      left: 0;
-      top: calc(100% + 12px);
-      min-width: 260px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 0.6rem;
-      display: none;
-      z-index: 25;
-    }
-
-    .menu-dropdown.open .menu-options {
-      display: block;
-    }
-
-    .menu-options a {
-      display: block;
-      padding: 0.8rem 0.9rem;
-      border-radius: 10px;
-      color: var(--primary-soft);
-      font-weight: 600;
-    }
-
-    .menu-options a:hover {
-      background: rgba(14, 165, 233, 0.08);
-      color: var(--accent-dark);
-    }
-
-    .nav a {
-      color: var(--primary-soft);
-      font-weight: 600;
-      justify-content: flex-end;
-    }
-
-    .nav a:hover { color: var(--accent); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.4rem;
-    }
-
-    .about-grid .about-card {
-      animation: aboutReveal 0.6s ease both;
-    }
-
-    .about-grid .about-card:nth-child(2) {
-      animation-delay: 0.12s;
-    }
-
-    @keyframes aboutReveal {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .about-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .about-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 22px 42px rgba(15, 23, 42, 0.12);
-    }
-
-    .about-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.35rem;
-    }
-
-    .about-card .role {
-      color: var(--accent-dark);
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-
-    .about-card p {
-      color: var(--muted);
-    }
-
-    .about-focus {
-      margin-top: 1.4rem;
-      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
-      border: 1px solid #bae6fd;
-      border-radius: var(--radius);
-      padding: 1.4rem;
-    }
-
-    .about-focus h3 { margin-bottom: 0.4rem; }
-    .about-focus p { color: var(--primary-soft); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.9rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 700;
-      transition: .2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: #fff;
-      box-shadow: 0 12px 20px rgba(14, 165, 233, 0.25);
-    }
-
-    .btn-primary:hover { transform: translateY(-1px); }
-
-    .btn-light {
-      background: #fff;
-      color: var(--primary);
-    }
-
-    .hero {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      background:
-        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: white;
-      padding: 7rem 0 4rem;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.58));
-      z-index: -1;
-    }
-
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      color: #dfeafe;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.3rem, 4vw, 4rem);
-      line-height: 1.08;
-      margin-bottom: 1rem;
-      letter-spacing: -0.04em;
-    }
-
-    .hero p {
-      color: rgba(255,255,255,0.8);
-      font-size: 1.1rem;
-      max-width: 620px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .stats {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      min-width: 120px;
-    }
-
-    .stat strong {
-      font-size: 1.7rem;
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .stat span {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.85rem;
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-    }
-
-    .search-box {
-      background: #fff;
-      color: var(--text);
-      border-radius: 18px;
-      padding: 1.2rem;
-      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.15);
-    }
-
-    .search-header {
-      display: flex;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .tab {
-      background: #edf5ff;
-      color: var(--primary-soft);
-      border: none;
-      border-radius: 10px;
-      padding: 0.7rem 1rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .tab.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    .search-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(140px, 1fr));
-      gap: 0.9rem;
-    }
-
-    select, input {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #f9fbff;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .search-grid .wide {
-      grid-column: 1 / -1;
-    }
-
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      letter-spacing: -0.04em;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-head p {
-      max-width: 720px;
-      color: var(--muted);
-      margin: 0 auto;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.6rem;
-    }
-
-    .featured-slider {
-      position: relative;
-      max-width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: var(--radius);
-    }
-
-    .featured-layout {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      max-width: 1120px;
-      margin: 0 auto;
-      align-items: stretch;
-    }
-
-    .featured-side .property-card {
-      height: 100%;
-      box-shadow: 0 22px 46px rgba(15, 23, 42, 0.14);
-    }
-
-    .featured-side .property-image { height: 180px; }
-    .featured-side .btn { margin-top: 0.8rem; padding: 0.7rem 1rem; }
-
-    .featured-metric {
-      display: flex;
-      min-height: 100%;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(145deg, var(--primary), var(--primary-soft));
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: 0 22px 46px rgba(15, 23, 42, 0.14);
-    }
-
-    .featured-metric .icon-box {
-      margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.14);
-      color: #fff;
-    }
-
-    .featured-metric strong {
-      display: block;
-      color: #fff;
-      font-size: clamp(2.4rem, 4vw, 3.6rem);
-      line-height: 1;
-      margin-bottom: 0.7rem;
-    }
-
-    .featured-metric p { color: rgba(255, 255, 255, 0.78); }
-
-    .featured-track {
-      display: flex;
-      transition: transform 0.55s ease;
-    }
-
-    .featured-slide {
-      min-width: 100%;
-    }
-
-    .featured-slide .property-card {
-      box-shadow: 0 22px 46px rgba(15, 23, 42, 0.14);
-    }
-
-    .featured-slide .property-image { height: 180px; }
+    :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --gold:#d4a441; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); --radius:18px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    a { text-decoration:none; }
+    img { max-width:100%; display:block; }
+    .container { width:min(1200px, calc(100% - 32px)); margin:0 auto; }
+
+    .topbar { background:#0a1427; color:#dfeaf8; font-size:0.8rem; padding:0.7rem 0; }
+    .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+
+    header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.96); backdrop-filter:blur(8px); border-bottom:1px solid rgba(15,23,42,0.06); }
+    .navbar { display:flex; align-items:center; justify-content:space-between; min-height:78px; gap:1rem; }
+    .logo { font-size:1.6rem; font-weight:800; color:var(--primary); letter-spacing:-0.04em; }
+    .logo span { color:var(--accent); }
+    .nav { display:flex; list-style:none; gap:1.2rem; flex-wrap:wrap; }
+    .nav a { color:var(--primary-soft); font-weight:600; font-size:0.95rem; }
+    .nav a:hover { color:var(--accent); }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; border-radius:12px; font-weight:700; border:none; cursor:pointer; transition:.2s ease; }
+    .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
+    .btn-primary:hover { transform:translateY(-1px); }
+    .btn-light { background:#fff; color:var(--primary); }
+    .btn-light:hover { background:#f1f5f9; }
+
+    .menu-dropdown { display:none; position:relative; }
+    .menu-toggle { display:inline-flex; align-items:center; gap:0.6rem; background:var(--primary); color:#fff; border:none; border-radius:12px; padding:0.8rem 1.2rem; font-weight:700; cursor:pointer; }
+    .menu-options { position:absolute; right:0; top:calc(100% + 12px); min-width:260px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:0.6rem; display:none; z-index:25; }
+    .menu-dropdown.open .menu-options { display:block; }
+    .menu-options a { display:block; padding:0.8rem 0.9rem; border-radius:10px; color:var(--primary-soft); font-weight:600; }
+    .menu-options a:hover { background:rgba(14,165,233,0.08); color:var(--accent-dark); }
+
+    .hero { position:relative; isolation:isolate; overflow:hidden; background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; color:#fff; padding:5rem 0 4rem; }
+    .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(120deg, rgba(15,23,42,0.88), rgba(15,23,42,0.58)); z-index:-1; }
+    .hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+    .hero-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 0.85rem; border-radius:999px; background:rgba(255,255,255,0.12); color:#dfeafe; font-size:0.8rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; }
+    .hero h1 { font-size:clamp(2.3rem, 4vw, 4rem); line-height:1.08; margin-bottom:1rem; letter-spacing:-0.04em; }
+    .hero p { color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:620px; margin-bottom:2rem; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
+    .stats { display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .stat { min-width:120px; }
+    .stat strong { font-size:1.7rem; display:block; margin-bottom:0.2rem; }
+    .stat span { color:rgba(255,255,255,0.75); font-size:0.85rem; }
+    .hero-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:20px; padding:1.5rem; box-shadow:var(--shadow); backdrop-filter:blur(8px); }
+    .search-box { background:#fff; color:var(--text); border-radius:18px; padding:1.2rem; box-shadow:0 18px 42px rgba(15,23,42,0.15); }
+    .search-grid { display:grid; grid-template-columns:repeat(2, minmax(140px, 1fr)); gap:0.9rem; }
+    select, input { width:100%; padding:0.9rem 1rem; border:1px solid var(--line); border-radius:10px; background:#f9fbff; font-size:0.95rem; color:var(--text); }
+    .search-grid .wide { grid-column:1 / -1; }
+
+    .section { padding:5rem 0; }
+    .section-head { text-align:center; margin-bottom:2.5rem; }
+    .section-head h2 { font-size:clamp(2rem, 3vw, 2.8rem); letter-spacing:-0.04em; margin-bottom:0.75rem; }
+    .section-head p { max-width:720px; color:var(--muted); margin:0 auto; }
+
+    .featured-slider { position:relative; max-width:100%; margin:0 auto; overflow:hidden; border-radius:var(--radius); }
+    .featured-layout { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; max-width:1120px; margin:0 auto; align-items:stretch; }
+    .featured-side .property-card { height:100%; box-shadow:0 22px 46px rgba(15,23,42,0.14); }
+    .featured-side .property-image { height:180px; }
+    .featured-side .btn { margin-top:0.8rem; padding:0.7rem 1rem; }
+    .featured-metric { display:flex; min-height:100%; flex-direction:column; justify-content:center; background:linear-gradient(145deg, var(--primary), var(--primary-soft)); color:#fff; border-radius:var(--radius); padding:1.5rem; box-shadow:0 22px 46px rgba(15,23,42,0.14); }
+    .featured-metric .icon-box { margin-bottom:1rem; background:rgba(255,255,255,0.14); color:#fff; }
+    .featured-metric strong { display:block; color:#fff; font-size:clamp(2.4rem, 4vw, 3.6rem); line-height:1; margin-bottom:0.7rem; }
+    .featured-metric p { color:rgba(255,255,255,0.78); }
+    .featured-track { display:flex; transition:transform 0.55s ease; }
+    .featured-slide { min-width:100%; }
+    .featured-slide .property-card { box-shadow:0 22px 46px rgba(15,23,42,0.14); }
+    .featured-slide .property-image { height:180px; }
     .featured-slide .property-body,
-    .featured-side .property-body { padding: 1rem; }
+    .featured-side .property-body { padding:1rem; }
 
-    .slider-control {
-      position: absolute;
-      top: 45%;
-      width: 34px;
-      height: 34px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.82);
-      color: #fff;
-      cursor: pointer;
-      z-index: 2;
+    .slider-control { position:absolute; top:45%; width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; border:0; border-radius:50%; background:rgba(15,23,42,0.82); color:#fff; cursor:pointer; z-index:2; }
+    .slider-control:hover { background:var(--accent-dark); }
+    .slider-control.prev { left:10px; }
+    .slider-control.next { right:10px; }
+    .slider-dots { display:flex; justify-content:center; gap:0.5rem; margin-top:1rem; }
+    .slider-dot { width:10px; height:10px; padding:0; border:0; border-radius:50%; background:#cbd5e1; cursor:pointer; }
+    .slider-dot.active { background:var(--accent); }
+
+    .property-card { background:var(--card); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(15,23,42,0.06); box-shadow:var(--shadow); transition:transform .2s ease; }
+    .property-card:hover { transform:translateY(-4px); }
+    .property-image { position:relative; height:220px; background-size:cover; background-position:center; }
+    .tag { position:absolute; top:16px; left:16px; background:rgba(15,23,42,0.88); color:#fff; border-radius:999px; padding:0.45rem 0.85rem; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; }
+    .property-body { padding:1.4rem; }
+    .price { color:var(--accent-dark); font-size:1.5rem; font-weight:800; margin-bottom:0.5rem; }
+    .property-body h3 { margin-bottom:0.6rem; font-size:1.2rem; }
+    .location { display:flex; align-items:center; gap:0.5rem; color:var(--muted); margin-bottom:1rem; font-size:0.92rem; }
+    .details { display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:0.9rem; gap:0.5rem; color:var(--muted); font-size:0.85rem; flex-wrap:wrap; }
+
+    .services { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.4rem; }
+    .service { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.5rem; }
+    .icon-box { width:54px; height:54px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; background:rgba(14,165,233,0.12); color:var(--accent-dark); font-size:1.3rem; margin-bottom:1rem; }
+    .service h3 { margin-bottom:0.7rem; }
+    .service p { color:var(--muted); }
+
+    .about-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.4rem; }
+    .about-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow); }
+    .about-card h3 { color:var(--primary); margin-bottom:0.35rem; }
+    .about-card .role { color:var(--accent-dark); font-weight:700; margin-bottom:0.8rem; }
+    .about-card p { color:var(--muted); }
+    .about-focus { margin-top:1.4rem; background:linear-gradient(135deg, #e0f2fe, #f8fafc); border:1px solid #bae6fd; border-radius:var(--radius); padding:1.4rem; }
+    .about-focus h3 { margin-bottom:0.4rem; }
+    .about-focus p { color:var(--primary-soft); }
+
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; }
+    .info-box { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); }
+    .check-list { list-style:none; display:grid; gap:1rem; margin-top:1.3rem; }
+    .check-list li { display:flex; align-items:flex-start; gap:0.8rem; color:var(--text); font-weight:600; }
+    .check-list i { color:var(--success); margin-top:0.2rem; font-size:1rem; }
+    .feature-panel { background:linear-gradient(180deg, #ffffff, #f3f8ff); border:1px solid var(--line); border-radius:22px; padding:1.6rem; box-shadow:var(--shadow); }
+
+    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.6rem; }
+
+    .process-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.4rem; }
+    .process { background:var(--card); border-radius:16px; border:1px solid var(--line); padding:1.5rem; }
+    .step { width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, var(--gold), #f3d279); color:var(--primary); font-weight:800; display:inline-flex; align-items:center; justify-content:center; margin-bottom:1rem; }
+    .process h3 { margin-bottom:0.4rem; }
+    .process p { color:var(--muted); }
+
+    .cta { background:linear-gradient(135deg, var(--primary), #183966); border-radius:24px; color:#fff; padding:2.2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; box-shadow:var(--shadow); }
+    .cta h3 { font-size:clamp(1.8rem, 2.5vw, 2.5rem); margin-bottom:0.5rem; }
+    .cta p { color:rgba(255,255,255,0.8); }
+
+    footer { background:#091421; color:rgba(255,255,255,0.8); padding:4rem 0 2rem; margin-top:5rem; }
+    .footer-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:2rem; }
+    .footer-col h4 { color:#fff; margin-bottom:1rem; font-size:1.1rem; }
+    .footer-col ul { list-style:none; display:grid; gap:0.7rem; }
+    .footer-col a, .footer-col li { color:rgba(255,255,255,0.7); }
+    .footer-col a:hover { color:#fff; }
+    .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; color:rgba(255,255,255,0.7); }
+
+    .whatsapp-btn { position:fixed; right:22px; bottom:22px; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#25d366; color:#fff; box-shadow:0 16px 26px rgba(37,211,102,0.35); z-index:30; font-size:1.6rem; }
+
+    @media (max-width: 1000px) {
+      .nav { display:none; }
+      .menu-dropdown { display:block; }
     }
-
-    .slider-control:hover { background: var(--accent-dark); }
-    .slider-control.prev { left: 10px; }
-    .slider-control.next { right: 10px; }
-
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .slider-dot {
-      width: 10px;
-      height: 10px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: #cbd5e1;
-      cursor: pointer;
-    }
-
-    .slider-dot.active { background: var(--accent); }
-
-    @media (max-width: 700px) {
-      .featured-layout { grid-template-columns: 1fr; }
-      .featured-slide { min-width: 100%; }
-      .slider-control, .slider-dots { display: flex; }
-    }
-
-    @media (min-width: 701px) {
-      .slider-control, .slider-dots { display: flex; }
-    }
-
-    .property-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      box-shadow: var(--shadow);
-      transition: transform .2s ease;
-    }
-
-    .property-card:hover { transform: translateY(-4px); }
-
-    .property-image {
-      position: relative;
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .tag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: rgba(15, 23, 42, 0.88);
-      color: #fff;
-      border-radius: 999px;
-      padding: 0.45rem 0.85rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .property-body {
-      padding: 1.4rem;
-    }
-
-    .price {
-      color: var(--accent-dark);
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .price small { font-size: 0.8rem; color: var(--muted); }
-
-    .property-body h3 {
-      margin-bottom: 0.6rem;
-      font-size: 1.2rem;
-    }
-
-    .location {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-size: 0.92rem;
-    }
-
-    .details {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid var(--line);
-      padding-top: 0.9rem;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      flex-wrap: wrap;
-    }
-
-    .feature-panel {
-      background: linear-gradient(180deg, #ffffff, #f3f8ff);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 1.6rem;
-      box-shadow: var(--shadow);
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .service {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-
-    .icon-box {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(14, 165, 233, 0.12);
-      color: var(--accent-dark);
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .service h3, .benefit h3 { margin-bottom: 0.7rem; }
-    .service p, .benefit p, .process p { color: var(--muted); }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .info-box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-
-    .check-list {
-      list-style: none;
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.3rem;
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .check-list i {
-      color: var(--success);
-      margin-top: 0.2rem;
-      font-size: 1rem;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .process {
-      background: var(--card);
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      padding: 1.5rem;
-      position: relative;
-    }
-
-    .step {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--gold), #f3d279);
-      color: var(--primary);
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, var(--primary), #183966);
-      border-radius: 24px;
-      color: white;
-      padding: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-
-    .cta h3 {
-      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-      margin-bottom: 0.5rem;
-    }
-
-    .cta p { color: rgba(255,255,255,0.8); }
-
-    footer {
-      background: #091421;
-      color: rgba(255,255,255,0.8);
-      padding: 4rem 0 2rem;
-      margin-top: 5rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .footer-col h4 {
-      color: #fff;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .footer-col a, .footer-col li { color: rgba(255,255,255,0.7); }
-
-    .copy {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      text-align: center;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #25d366;
-      color: #fff;
-      box-shadow: 0 16px 26px rgba(37, 211, 102, 0.35);
-      z-index: 30;
-      font-size: 1.6rem;
-    }
-
     @media (max-width: 900px) {
-      .hero-grid, .split, .footer-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .cta { flex-direction: column; align-items: flex-start; }
+      .hero-grid, .split, .footer-grid { grid-template-columns:1fr; }
+      .about-grid { grid-template-columns:1fr; }
+      .cta { flex-direction:column; align-items:flex-start; }
+      .featured-layout { grid-template-columns:1fr; }
     }
-
     @media (max-width: 700px) {
-      .nav { display: none; }
-      .menu-dropdown { display: block; }
-      .search-grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 6rem; }
-      .section { padding: 4rem 0; }
+      .search-grid { grid-template-columns:1fr; }
+      .section { padding:4rem 0; }
     }
-    body, body * { user-select: none; }
-    img, video { -webkit-user-drag: none; }
+    body, body * { user-select:none; }
+    img, video { -webkit-user-drag:none; }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="container">
+      <span>Empreendimentos, terrenos e financiamento</span>
+      <span>📍 Itapeva e região</span>
+    </div>
+  </div>
+
   <header>
     <div class="container navbar">
+      <a href="index.html" class="logo">RC <span>Almeida</span></a>
+      <ul class="nav">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="empreendimentos.html">Comprar</a></li>
+        <li><a href="index.html#terrenos">Terreno financiável</a></li>
+        <li><a href="terreno-construcao.html">Terreno + construção</a></li>
+        <li><a href="financiamento.html">Financiamento</a></li>
+        <li><a href="engenharia.html">Engenharia</a></li>
+        <li><a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">Simular poder de compra</a></li>
+        <li><a href="index.html#sobre">Sobre nós</a></li>
+      </ul>
+      <a href="index.html#contato" class="btn btn-primary">Contato</a>
+
       <div class="menu-dropdown" id="menuDropdown">
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuOptions">
-          <i class="fa-solid fa-bars"></i>
-          Menu
+          <i class="fa-solid fa-bars"></i> Menu
         </button>
         <div class="menu-options" id="menuOptions">
-          <a href="#inicio">Início</a>
+          <a href="index.html">Início</a>
           <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-          <a href="#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
+          <a href="index.html#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
           <a href="terreno-construcao.html"><i class="fa-solid fa-house"></i> Terreno + construção</a>
           <a href="financiamento.html"><i class="fa-solid fa-building-columns"></i> Financiamento</a>
           <a href="engenharia.html"><i class="fa-solid fa-helmet-safety"></i> Engenharia</a>
-          <a href="simulacao-caixa.html"><i class="fa-solid fa-calculator"></i> Simular poder de compra</a>
-          <a href="#sobre"><i class="fa-solid fa-users"></i> Sobre nós</a>
-          <a href="#contato"><i class="fa-solid fa-phone"></i> Contato</a>
+          <a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-calculator"></i> Simular poder de compra</a>
+          <a href="index.html#sobre"><i class="fa-solid fa-users"></i> Sobre nós</a>
+          <a href="index.html#contato"><i class="fa-solid fa-phone"></i> Contato</a>
         </div>
       </div>
     </div>
@@ -827,25 +214,14 @@
           <div class="eyebrow">Atuação em Itapeva e região</div>
           <h1>Empreendimentos com potencial e segurança.</h1>
           <p>Terrenos, construção, financiamento e engenharia para quem quer investir com mais confiança na região de Itapeva.</p>
-
           <div class="hero-actions">
-            <a href="#empreendimentos" class="btn btn-primary">Ver opções</a>
+            <a href="empreendimentos.html" class="btn btn-primary">Ver opções</a>
             <a href="financiamento.html" class="btn btn-light">Financiamento</a>
           </div>
-
           <div class="stats">
-            <div class="stat">
-              <strong>+120</strong>
-              <span>Projetos</span>
-            </div>
-            <div class="stat">
-              <strong>+18</strong>
-              <span>Anos de atuação</span>
-            </div>
-            <div class="stat">
-              <strong>4,9/5</strong>
-              <span>Clientes</span>
-            </div>
+            <div class="stat"><strong>+120</strong><span>Projetos</span></div>
+            <div class="stat"><strong>+18</strong><span>Anos de atuação</span></div>
+            <div class="stat"><strong>4,9/5</strong><span>Clientes</span></div>
           </div>
         </div>
 
@@ -865,12 +241,6 @@
                 <option>Região de Itapeva</option>
                 <option>Interior de São Paulo</option>
                 <option>Municípios próximos</option>
-                <option>Campinas - SP</option>
-                <option>São Paulo - SP</option>
-                <option>Ribeirão Preto - SP</option>
-                <option>Sorocaba - SP</option>
-                <option>Presidente Prudente - SP</option>
-                <option>Outras cidades do estado</option>
               </select>
               <select>
                 <option>Faixa de valor</option>
@@ -886,7 +256,7 @@
                 <option>Pronto para morar</option>
                 <option>Lançamento</option>
               </select>
-              <button class="btn btn-primary wide" type="button">Buscar oportunidade</button>
+              <a href="empreendimentos.html" class="btn btn-primary wide">Buscar oportunidade</a>
             </div>
           </div>
         </div>
@@ -903,70 +273,66 @@
         <div class="featured-layout">
           <div class="featured-slider" id="featuredSlider" aria-label="Fotos dos empreendimentos em destaque">
             <div class="featured-track">
-            <div class="featured-slide">
-              <article class="property-card">
-                <div class="property-image" style="background-image: url('Fotos/botanicgarden.jpg');">
-                  <span class="tag">Botanic Garden</span>
-                </div>
-                <div class="property-body">
-                  <h3>Botanic Garden</h3>
-                  <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
-                  <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
-                </div>
-              </article>
-            </div>
-
-            <div class="featured-slide">
-              <article class="property-card">
-                <div class="property-image" style="background-image: url('Fotos/ourovillepark.jpg');">
-                  <span class="tag">Ouroville Park</span>
-                </div>
-                <div class="property-body">
-                  <h3>Ouroville Park</h3>
-                  <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
-                  <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
-                </div>
-              </article>
-            </div>
-
-            <div class="featured-slide">
-              <article class="property-card">
-                <div class="property-image" style="background-image: url('Fotos/portalitapeva.JPG');">
-                  <span class="tag">Portal Itapeva</span>
-                </div>
-                <div class="property-body">
-                  <h3>Portal Itapeva</h3>
-                  <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
-                  <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
-                </div>
-              </article>
-            </div>
-
-            <div class="featured-slide">
-              <article class="property-card">
-                <div class="property-image" style="background-image: url('Fotos/vemviver.jpg');">
-                  <span class="tag">Vem Viver</span>
-                </div>
-                <div class="property-body">
-                  <h3>Vem Viver</h3>
-                  <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
-                  <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
-                </div>
-              </article>
-            </div>
-
-            <div class="featured-slide">
-              <article class="property-card">
-                <div class="property-image" style="background-image: url('Fotos/reservaitapeva.webp');">
-                  <span class="tag">Reserva Itapeva</span>
-                </div>
-                <div class="property-body">
-                  <h3>Reserva Itapeva</h3>
-                  <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
-                  <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
-                </div>
-              </article>
-            </div>
+              <div class="featured-slide">
+                <article class="property-card">
+                  <div class="property-image" style="background-image:url('Fotos/botanicgarden.jpg');">
+                    <span class="tag">Botanic Garden</span>
+                  </div>
+                  <div class="property-body">
+                    <h3>Botanic Garden</h3>
+                    <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
+                    <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="featured-slide">
+                <article class="property-card">
+                  <div class="property-image" style="background-image:url('Fotos/ourovillepark.jpg');">
+                    <span class="tag">Ouroville Park</span>
+                  </div>
+                  <div class="property-body">
+                    <h3>Ouroville Park</h3>
+                    <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
+                    <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="featured-slide">
+                <article class="property-card">
+                  <div class="property-image" style="background-image:url('Fotos/portalitapeva.JPG');">
+                    <span class="tag">Portal Itapeva</span>
+                  </div>
+                  <div class="property-body">
+                    <h3>Portal Itapeva</h3>
+                    <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
+                    <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="featured-slide">
+                <article class="property-card">
+                  <div class="property-image" style="background-image:url('Fotos/vemviver.jpg');">
+                    <span class="tag">Vem Viver</span>
+                  </div>
+                  <div class="property-body">
+                    <h3>Vem Viver</h3>
+                    <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
+                    <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="featured-slide">
+                <article class="property-card">
+                  <div class="property-image" style="background-image:url('Fotos/reservaitapeva.webp');">
+                    <span class="tag">Reserva Itapeva</span>
+                  </div>
+                  <div class="property-body">
+                    <h3>Reserva Itapeva</h3>
+                    <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva e região</div>
+                    <p>Empreendimento em destaque. Consulte disponibilidade e condições.</p>
+                  </div>
+                </article>
+              </div>
             </div>
             <button class="slider-control prev" type="button" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="slider-control next" type="button" aria-label="Próxima foto"><i class="fa-solid fa-chevron-right"></i></button>
@@ -981,7 +347,7 @@
 
           <div class="featured-side">
             <article class="property-card">
-              <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
+              <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
                 <span class="tag">Terreno + construção</span>
               </div>
               <div class="property-body">
@@ -1009,26 +375,22 @@
           <h2>O que você encontra conosco</h2>
           <p>Uma solução completa para quem deseja imóveis, projetos e estratégias de crescimento patrimonial.</p>
         </div>
-
         <div class="services">
           <div class="service">
             <div class="icon-box"><i class="fa-solid fa-city"></i></div>
             <h3>Empreendimentos</h3>
             <p>Imóveis novos com excelente localização, acabamento premium e valorização no longo prazo.</p>
           </div>
-
           <div class="service">
             <div class="icon-box"><i class="fa-solid fa-landmark"></i></div>
             <h3>Terreno com construção</h3>
             <p>Opções com lote e obra planejada para encaixar seu orçamento, perfil e objetivo de investimento.</p>
           </div>
-
           <div class="service">
             <div class="icon-box"><i class="fa-solid fa-sack-dollar"></i></div>
             <h3>Financiamento</h3>
             <p>Estratégias para aprovação, simulação e melhor condição junto às instituições financeiras.</p>
           </div>
-
           <div class="service">
             <div class="icon-box"><i class="fa-solid fa-helmet-safety"></i></div>
             <h3>Engenharia</h3>
@@ -1044,26 +406,22 @@
           <h2>Equipe RC Almeida Soluções Imobiliárias</h2>
           <p>Sobre nós: uma equipe que une experiência, organização e orientação para tornar o financiamento imobiliário mais claro e seguro.</p>
         </div>
-
         <div class="about-grid">
           <article class="about-card">
             <h3>Renato Camargo</h3>
             <p class="role">Empresário e especialista em financiamento imobiliário</p>
             <p>Administrador, com mais de 13 anos de experiência no mercado. Atua na orientação de clientes, análise de oportunidades e planejamento para a realização de negócios imobiliários.</p>
           </article>
-
           <article class="about-card">
             <h3>Daiane Oliveira</h3>
             <p class="role">Especialista em financiamento habitacional</p>
             <p>Administradora e bacharel em Administração, com atuação voltada ao financiamento habitacional, organização de documentos e acompanhamento das etapas do processo.</p>
           </article>
         </div>
-
         <div class="about-focus">
           <h3>Finanças e Controladoria</h3>
           <p>Nosso trabalho também envolve planejamento financeiro, análise de capacidade de pagamento, organização de informações e controladoria para apoiar decisões imobiliárias com mais segurança e clareza.</p>
         </div>
-
       </div>
     </section>
 
@@ -1073,7 +431,7 @@
           <div class="section-head" style="text-align:left; margin-bottom:1.5rem;">
             <h2>Financiamento inteligente</h2>
           </div>
-          <p style="color: var(--muted); margin-bottom: 1rem;">Assessoria completa para simular, organizar documentação e encontrar a melhor opção para sua compra ou investimento.</p>
+          <p style="color:var(--muted); margin-bottom:1rem;">Assessoria completa para simular, organizar documentação e encontrar a melhor opção para sua compra ou investimento.</p>
           <ul class="check-list">
             <li><i class="fa-solid fa-circle-check"></i> Simulação com foco no seu perfil e renda.</li>
             <li><i class="fa-solid fa-circle-check"></i> Acompanhamento em todas as etapas da aprovação.</li>
@@ -1081,7 +439,6 @@
             <li><i class="fa-solid fa-circle-check"></i> Especialistas em imóveis, construções e investidores.</li>
           </ul>
         </div>
-
         <div class="feature-panel">
           <div class="section-head" style="text-align:left; margin-bottom:1.2rem;">
             <h2>Por que escolher nossa consultoria?</h2>
@@ -1108,10 +465,9 @@
           <h2>Terrenos e áreas estratégicas</h2>
           <p>Áreas com potencial de valorização, infraestrutura e oportunidades para construção ou investimento.</p>
         </div>
-
         <div class="cards">
           <article class="property-card">
-            <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
+            <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
               <span class="tag">Terreno</span>
             </div>
             <div class="property-body">
@@ -1125,9 +481,8 @@
               </div>
             </div>
           </article>
-
           <article class="property-card">
-            <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');">
+            <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');">
               <span class="tag">Construção</span>
             </div>
             <div class="property-body">
@@ -1136,14 +491,13 @@
               <div class="location"><i class="fa-solid fa-location-dot"></i> Setor Residencial</div>
               <div class="details">
                 <span><i class="fa-solid fa-house"></i> 4 quartos</span>
-                <span><i class="fa-solid fa-gear"></i> Projeto sob medida</span>
+                <span><i class="fa-solid fa-gear"></i> Projeto</span>
                 <span><i class="fa-solid fa-tree"></i> Área externa</span>
               </div>
             </div>
           </article>
-
           <article class="property-card">
-            <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');">
+            <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');">
               <span class="tag">Investimento</span>
             </div>
             <div class="property-body">
@@ -1157,66 +511,6 @@
               </div>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="engenharia">
-      <div class="container">
-        <div class="section-head">
-          <h2>Planejamento e engenharia com visão de mercado</h2>
-          <p>Projetos pensados para entregar valor, funcionalidade e melhor retorno para sua compra ou investimento.</p>
-        </div>
-
-        <div class="process-grid">
-          <div class="process">
-            <div class="step">1</div>
-            <h3>Diagnóstico</h3>
-            <p>Entendemos seu objetivo, orçamento e perfil para mapear a melhor oportunidade.</p>
-          </div>
-          <div class="process">
-            <div class="step">2</div>
-            <h3>Viabilidade</h3>
-            <p>Analise técnica, retorno financeiro e avaliação de risco antes da decisão.</p>
-          </div>
-          <div class="process">
-            <div class="step">3</div>
-            <h3>Negociação</h3>
-            <p>Estratégia para garantir melhor condição de compra, construção e financiamento.</p>
-          </div>
-          <div class="process">
-            <div class="step">4</div>
-            <h3>Entrega</h3>
-            <p>Acompanhamento completo até a contratação, obra ou entrega do imóvel.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="terreno-construcao">
-      <div class="container">
-        <div class="section-head">
-          <h2>Terreno com construção</h2>
-          <p>Soluções que unem loteamento, projeto imobiliário e construção com melhor aproveitamento do investimento.</p>
-        </div>
-        <div class="feature-panel">
-          <div class="services">
-            <div class="service">
-              <div class="icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
-              <h3>Terreno em área estratégica</h3>
-              <p>Oportunidades em regiões com crescimento, infraestrutura e valorização.</p>
-            </div>
-            <div class="service">
-              <div class="icon-box"><i class="fa-solid fa-house-chimney"></i></div>
-              <h3>Construção planejada</h3>
-              <p>Projeto pensado para atender ao mercado e melhorar a rentabilidade do imóvel.</p>
-            </div>
-            <div class="service">
-              <div class="icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
-              <h3>Atendimento completo</h3>
-              <p>Orientação desde a escolha do terreno até a entrega da obra.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -1238,25 +532,38 @@
     <div class="container footer-grid">
       <div class="footer-col">
         <h4>Atendimento imobiliário</h4>
-        <p>Especialistas em projetos imobiliários, financiamento, terrenos com construção e investimento em imóveis com alto potencial em Itapeva e na região do interior de São Paulo.</p>
+        <p>Especialistas em projetos imobiliários, financiamento, terrenos com construção e investimento em imóveis com alto potencial em Itapeva e região.</p>
       </div>
       <div class="footer-col">
         <h4>Menu</h4>
         <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#terrenos">Terreno financiável</a></li>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="empreendimentos.html">Comprar</a></li>
+          <li><a href="index.html#terrenos">Terreno financiável</a></li>
           <li><a href="terreno-construcao.html">Terreno + construção</a></li>
           <li><a href="financiamento.html">Financiamento</a></li>
           <li><a href="engenharia.html">Engenharia</a></li>
-          <li><a href="simulacao-caixa.html">Simular poder de compra</a></li>
+          <li><a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">Simular poder de compra</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li>📞 Renato Camargo: (15) 99703-8249</li>
-          <li>📞 Daiane Oliveira: (15) 99854-1107</li>
-          <li>✉️ <a href="mailto:vendasimobimoveis@gmail.com">vendasimobimoveis@gmail.com</a></li>
+          <li>
+            <a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99703-8249
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/5515998541107" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99854-1107
+            </a>
+          </li>
+          <li>
+            <a href="mailto:vendasimobimoveis@gmail.com">
+              <i class="fa-solid fa-envelope"></i> vendasimobimoveis@gmail.com
+            </a>
+          </li>
           <li>📍 Itapeva - SP</li>
         </ul>
       </div>
@@ -1264,41 +571,36 @@
     <div class="container copy">© 2026. Todos os direitos reservados.</div>
   </footer>
 
-  <a href="https://wa.me/5515997038249" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp do Renato">
+  <a href="https://wa.me/5515997038249" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <script>
     const blockCasualCopy = (event) => {
       const key = event.key.toLowerCase();
-      if ((event.ctrlKey || event.metaKey) && ['c', 'x', 'u', 's', 'p'].includes(key)) event.preventDefault();
-      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i', 'j', 'c'].includes(key))) event.preventDefault();
+      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
+      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
     };
-
     document.addEventListener('contextmenu', (event) => event.preventDefault());
     document.addEventListener('dragstart', (event) => event.preventDefault());
     document.addEventListener('keydown', blockCasualCopy);
 
     const menuDropdown = document.getElementById('menuDropdown');
     const menuToggle = document.querySelector('.menu-toggle');
-
     if (menuDropdown && menuToggle) {
       menuToggle.addEventListener('click', () => {
         const isOpen = menuDropdown.classList.toggle('open');
         menuToggle.setAttribute('aria-expanded', String(isOpen));
       });
-
       document.addEventListener('click', (event) => {
         if (!menuDropdown.contains(event.target)) {
           menuDropdown.classList.remove('open');
           menuToggle.setAttribute('aria-expanded', 'false');
         }
-
       });
     }
 
     const featuredSlider = document.getElementById('featuredSlider');
-
     if (featuredSlider) {
       const featuredTrack = featuredSlider.querySelector('.featured-track');
       const featuredSlides = featuredSlider.querySelectorAll('.featured-slide');
@@ -1315,34 +617,19 @@
           dot.classList.toggle('active', dotIndex === featuredIndex);
         });
       };
-
       const startFeaturedSlider = () => {
         clearInterval(featuredTimer);
         featuredTimer = setInterval(() => showFeaturedSlide(featuredIndex + 1), 4500);
       };
-
-      previousButton.addEventListener('click', () => {
-        showFeaturedSlide(featuredIndex - 1);
-        startFeaturedSlider();
-      });
-
-      nextButton.addEventListener('click', () => {
-        showFeaturedSlide(featuredIndex + 1);
-        startFeaturedSlider();
-      });
-
+      previousButton.addEventListener('click', () => { showFeaturedSlide(featuredIndex - 1); startFeaturedSlider(); });
+      nextButton.addEventListener('click', () => { showFeaturedSlide(featuredIndex + 1); startFeaturedSlider(); });
       featuredDots.forEach((dot, dotIndex) => {
-        dot.addEventListener('click', () => {
-          showFeaturedSlide(dotIndex);
-          startFeaturedSlider();
-        });
+        dot.addEventListener('click', () => { showFeaturedSlide(dotIndex); startFeaturedSlider(); });
       });
-
       startFeaturedSlider();
     }
 
     const clientsCount = document.getElementById('clientsCount');
-
     if (clientsCount) {
       const targetClients = 350;
       let currentClients = 0;
@@ -1350,12 +637,8 @@
       const countClients = () => {
         currentClients = Math.min(targetClients, currentClients + countStep);
         clientsCount.textContent = currentClients;
-
-        if (currentClients < targetClients) {
-          requestAnimationFrame(countClients);
-        }
+        if (currentClients < targetClients) requestAnimationFrame(countClients);
       };
-
       countClients();
     }
   </script>
