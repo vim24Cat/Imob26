@@ -19,7 +19,6 @@
     img { max-width:100%; display:block; }
     .container { width:min(1200px, calc(100% - 32px)); margin:0 auto; }
 
-    /* ============ TOPO INTEGRADO AO HERO (mesmo prédio) ============ */
     .hero {
       position: relative;
       isolation: isolate;
@@ -31,43 +30,18 @@
       padding: 2rem 0 5rem;
     }
 
-    /* Topo com botão Menu flutuando sobre a imagem */
-    .top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 3.5rem;
-    }
-    .top-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-    .top-brand i {
-      color: var(--accent);
-      font-size: 1.3rem;
-    }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 3.5rem; }
+    .top-brand { display: flex; align-items: center; gap: 0.6rem; color: #fff; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+    .top-brand i { color: var(--accent); font-size: 1.3rem; }
 
-    /* Menu minimizado (sempre) */
     .menu-dropdown { position: relative; display: block; }
     .menu-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(255,255,255,0.14);
-      color: #fff;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(255,255,255,0.14); color: #fff;
       border: 1px solid rgba(255,255,255,0.25);
       backdrop-filter: blur(8px);
-      border-radius: 12px;
-      padding: 0.85rem 1.3rem;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
+      border-radius: 12px; padding: 0.85rem 1.3rem;
+      font-weight: 700; font-size: 0.95rem; cursor: pointer;
       transition: background .2s ease;
     }
     .menu-toggle:hover { background: rgba(255,255,255,0.22); }
@@ -75,17 +49,11 @@
     .menu-dropdown.open .menu-toggle i { transform: rotate(90deg); }
 
     .menu-options {
-      position: absolute;
-      right: 0;
-      top: calc(100% + 12px);
-      min-width: 280px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 0.6rem;
-      display: none;
-      z-index: 25;
+      position: absolute; right: 0; top: calc(100% + 12px);
+      min-width: 280px; background: #fff;
+      border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); padding: 0.6rem;
+      display: none; z-index: 25;
       animation: menuFade .18s ease;
     }
     .menu-dropdown.open .menu-options { display: block; }
@@ -101,7 +69,6 @@
     .menu-options a i { width: 18px; text-align: center; color: var(--accent-dark); }
     .menu-options .divider { height:1px; background: var(--line); margin: 0.4rem 0.3rem; }
 
-    /* Conteúdo do hero */
     .hero-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; }
     .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 0.85rem; border-radius:999px; background:rgba(255,255,255,0.12); color:#dfeafe; font-size:0.8rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; }
     .hero h1 { font-size:clamp(2.3rem, 4vw, 4rem); line-height:1.08; margin-bottom:1rem; letter-spacing:-0.04em; }
@@ -123,7 +90,6 @@
     .btn-light { background:#fff; color:var(--primary); }
     .btn-light:hover { background:#f1f5f9; }
 
-    /* ============ SEÇÕES ============ */
     .section { padding:5rem 0; }
     .section-head { text-align:center; margin-bottom:2.5rem; }
     .section-head h2 { font-size:clamp(2rem, 3vw, 2.8rem); letter-spacing:-0.04em; margin-bottom:0.75rem; }
@@ -152,6 +118,155 @@
     .slider-dots { display:flex; justify-content:center; gap:0.5rem; margin-top:1rem; }
     .slider-dot { width:10px; height:10px; padding:0; border:0; border-radius:50%; background:#cbd5e1; cursor:pointer; }
     .slider-dot.active { background:var(--accent); }
+
+    /* ===== CARD "PROJETOS EM DESTAQUE" (lateral) ===== */
+    .featured-projects {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 22px 46px rgba(15,23,42,0.14);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .featured-projects-head {
+      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+      color: #fff;
+      padding: 1rem 1.2rem;
+      text-align: center;
+    }
+    .featured-projects-head h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .featured-projects-head p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .projects-slider {
+      position: relative;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    .projects-track {
+      display: flex;
+      transition: transform 0.55s ease;
+    }
+    .projects-slide {
+      min-width: 100%;
+      padding: 0.8rem;
+    }
+    .project-mini {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .project-mini-image {
+      height: 120px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .project-mini-image .tag {
+      top: 10px;
+      left: 10px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.65rem;
+    }
+    .project-mini-body {
+      padding: 0.85rem;
+    }
+    .project-mini-body h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: var(--primary);
+    }
+    .project-mini-body p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .btn-mini {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.55rem 0.8rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .projects-control {
+      position: absolute;
+      top: 40%;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.82);
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .projects-control:hover { background: var(--accent-dark); }
+    .projects-control.prev { left: 8px; }
+    .projects-control.next { right: 8px; }
+
+    .projects-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0 1rem;
+    }
+    .projects-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+    }
+    .projects-dot.active { background: var(--accent); }
+
+    /* ===== LINHA "CLIENTES ATENDIDOS" (embaixo) ===== */
+    .clients-row {
+      margin-top: 1.5rem;
+    }
+    .clients-row .featured-metric {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+    }
+    .clients-row .featured-metric .icon-box {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+    .clients-row .featured-metric strong {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0;
+    }
+    .clients-row .featured-metric h3 {
+      margin: 0;
+    }
+    .clients-row .featured-metric p {
+      margin: 0;
+      max-width: 520px;
+    }
 
     .property-card { background:var(--card); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(15,23,42,0.06); box-shadow:var(--shadow); transition:transform .2s ease; }
     .property-card:hover { transform:translateY(-4px); }
@@ -213,6 +328,8 @@
       .cta { flex-direction:column; align-items:flex-start; }
       .featured-layout { grid-template-columns:1fr; }
       .top { margin-bottom: 2.5rem; }
+      .clients-row .featured-metric { flex-direction: column; text-align: center; }
+      .clients-row .featured-metric p { max-width: 100%; }
     }
     @media (max-width:700px) {
       .search-grid { grid-template-columns:1fr; }
@@ -226,10 +343,8 @@
 <body>
 
   <main id="inicio">
-    <!-- ============ TOPO + HERO integrados sobre a imagem do prédio ============ -->
     <section class="hero">
       <div class="container">
-        <!-- Topo com botão Menu flutuando sobre a imagem -->
         <div class="top">
           <a href="index.html" class="top-brand">
             <i class="fa-solid fa-building"></i>
@@ -254,7 +369,6 @@
           </div>
         </div>
 
-        <!-- Conteúdo do hero -->
         <div class="hero-grid">
           <div>
             <div class="eyebrow">Atuação em Itapeva e região</div>
@@ -310,7 +424,7 @@
       </div>
     </section>
 
- <!-- ============ EMPREENDIMENTOS EM DESTAQUE ============ -->
+    <!-- ============ EMPREENDIMENTOS EM DESTAQUE ============ -->
     <section class="section" id="empreendimentos">
       <div class="container">
         <div class="section-head">
@@ -319,6 +433,7 @@
         </div>
 
         <div class="featured-layout">
+          <!-- SLIDER PRINCIPAL DE EMPREENDIMENTOS -->
           <div class="featured-slider" id="featuredSlider" aria-label="Fotos dos empreendimentos em destaque">
             <div class="featured-track">
               <div class="featured-slide">
@@ -397,15 +512,16 @@
             <button class="slider-control prev" type="button" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="slider-control next" type="button" aria-label="Próxima foto"><i class="fa-solid fa-chevron-right"></i></button>
             <div class="slider-dots" aria-label="Selecionar foto">
-              <button class="slider-dot active" type="button" aria-label="Ver foto 1"></button>
-              <button class="slider-dot" type="button" aria-label="Ver foto 2"></button>
-              <button class="slider-dot" type="button" aria-label="Ver foto 3"></button>
-              <button class="slider-dot" type="button" aria-label="Ver foto 4"></button>
-              <button class="slider-dot" type="button" aria-label="Ver foto 5"></button>
-              <button class="slider-dot" type="button" aria-label="Ver foto 6"></button>
+              <button class="slider-dot active" type="button"></button>
+              <button class="slider-dot" type="button"></button>
+              <button class="slider-dot" type="button"></button>
+              <button class="slider-dot" type="button"></button>
+              <button class="slider-dot" type="button"></button>
+              <button class="slider-dot" type="button"></button>
             </div>
           </div>
 
+          <!-- CARD LATERAL: TERRENO + CONSTRUÇÃO -->
           <div class="featured-side">
             <article class="property-card">
               <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');">
@@ -420,6 +536,103 @@
             </article>
           </div>
 
+          <!-- CARD LATERAL: PROJETOS EM DESTAQUE (SLIDER) -->
+          <div class="featured-projects">
+            <div class="featured-projects-head">
+              <h3>Projetos em destaque</h3>
+              <p>Modelos prontos para construir</p>
+            </div>
+            <div class="projects-slider" id="projectsSlider" aria-label="Modelos de projetos em destaque">
+              <div class="projects-track">
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/1200x/4c/dc/28/4cdc28f95989aeeff4b7747ce9297efd.jpg');">
+                      <span class="tag">40m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Casa Térrea Compacta</h4>
+                      <p>2 quartos · 1 vaga</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Casa%20T%C3%A9rrea%20Compacta%2040m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/3a/11/b2/3a11b25ee61584b778a54d676d61de5b.jpg');">
+                      <span class="tag">44m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Casa Térrea c/ Suíte</h4>
+                      <p>2 qts · 1 suíte</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Casa%20T%C3%A9rrea%2044m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/b8/1e/b0/b81eb004ee7e441281ab3e344202124b.jpg');">
+                      <span class="tag">60m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Casa Térrea 60m²</h4>
+                      <p>2 quartos · 1 vaga coberta</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Casa%20T%C3%A9rrea%2060m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/ac/55/83/ac5583ced12fb1939cc269a2ebaedf91.jpg');">
+                      <span class="tag">50m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Projeto c/ Aclive</h4>
+                      <p>2 quartos · 1 vaga</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Terreno%20com%20aclive%2050m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/1c/69/c3/1c69c307cee3e38c33e1b6b6db7157cf.jpg');">
+                      <span class="tag">130m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Alto Padrão 130m²</h4>
+                      <p>3 qts · 2 vagas</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Alto%20Padr%C3%A3o%20130m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="projects-slide">
+                  <article class="project-mini">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/5d/96/d9/5d96d960327c9c51660f23df5afaca6a.jpg');">
+                      <span class="tag">250m²</span>
+                    </div>
+                    <div class="project-mini-body">
+                      <h4>Alto Padrão 250m²</h4>
+                      <p>3 suítes · 2 vagas</p>
+                      <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Quero%20comprar%20o%20projeto%20%22Alto%20Padr%C3%A3o%20250m%C2%B2%22." target="_blank" rel="noopener noreferrer" class="btn-mini">Comprar</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button class="projects-control prev" type="button" aria-label="Projeto anterior"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="projects-control next" type="button" aria-label="Próximo projeto"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="projects-dots" aria-label="Selecionar projeto">
+                <button class="projects-dot active" type="button"></button>
+                <button class="projects-dot" type="button"></button>
+                <button class="projects-dot" type="button"></button>
+                <button class="projects-dot" type="button"></button>
+                <button class="projects-dot" type="button"></button>
+                <button class="projects-dot" type="button"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD CLIENTES ATENDIDOS (agora embaixo) -->
+        <div class="clients-row">
           <div class="featured-metric">
             <div class="icon-box"><i class="fa-solid fa-handshake"></i></div>
             <strong><span id="clientsCount">0</span>+</strong>
@@ -429,8 +642,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ============ SERVIÇOS ============ -->
+        <!-- ============ SERVIÇOS ============ -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -537,12 +749,12 @@
             </div>
             <div class="property-body">
               <div class="price">R$ 65.000,00</div>
-              <h3>Lote com declive, preço a baixo de mercado</h3>
+              <h3>Lote com declive, preço abaixo de mercado</h3>
               <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Portal Itapeva</div>
               <div class="details">
                 <span><i class="fa-solid fa-ruler"></i> 175m²</span>
-                <span><i class="fa-solid fa-road"></i> Disponivel a vista ou Financiamento Bancario</span>
-                <span><i class="fa-solid fa-arrow-trend-up"></i>Com potencial de valorização</span>
+                <span><i class="fa-solid fa-road"></i> À vista ou financiamento</span>
+                <span><i class="fa-solid fa-arrow-trend-up"></i> Potencial de valorização</span>
               </div>
             </div>
           </article>
@@ -551,13 +763,13 @@
               <span class="tag">Modelos de projetos</span>
             </div>
             <div class="property-body">
-              <div class="price">Modelo de Terreno + Construção a partir de R$ 210.000,00</div>
+              <div class="price">Terreno + Construção a partir de R$ 210.000,00</div>
               <h3>Casa com projeto customizado</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva-SP</div>
               <div class="details">
-                <span><i class="fa-solid fa-house"></i> Sala, cozinha, 2 quartos, area de serviço</span>
+                <span><i class="fa-solid fa-house"></i> Sala, cozinha, 2 quartos, área de serviço</span>
                 <span><i class="fa-solid fa-gear"></i> Projeto</span>
-                <span><i class="fa-solid fa-tree"></i> Preço valido para 2026, anos posteriores poderão ser alterados, acompanhando o metro quadrado de cada região</span>
+                <span><i class="fa-solid fa-tree"></i> Preço válido para 2026</span>
               </div>
             </div>
           </article>
@@ -571,7 +783,7 @@
               <div class="location"><i class="fa-solid fa-location-dot"></i> Ponto estratégico</div>
               <div class="details">
                 <span><i class="fa-solid fa-building"></i> Potencial</span>
-                <span><i class="fa-solid fa-warehouse"></i> </span>
+                <span><i class="fa-solid fa-warehouse"></i> Uso misto</span>
                 <span><i class="fa-solid fa-chart-column"></i> Rentabilidade</span>
               </div>
             </div>
@@ -671,6 +883,7 @@
       if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
     });
 
+    // Menu dropdown
     const menuDropdown = document.getElementById('menuDropdown');
     const menuToggle = document.querySelector('.menu-toggle');
     if (menuDropdown && menuToggle) {
@@ -686,6 +899,7 @@
       });
     }
 
+    // Slider de empreendimentos
     const featuredSlider = document.getElementById('featuredSlider');
     if (featuredSlider) {
       const featuredTrack = featuredSlider.querySelector('.featured-track');
@@ -715,6 +929,35 @@
       startFeaturedSlider();
     }
 
+    // Slider de projetos (lateral)
+    const projectsSlider = document.getElementById('projectsSlider');
+    if (projectsSlider) {
+      const projectsTrack = projectsSlider.querySelector('.projects-track');
+      const projectsSlides = projectsSlider.querySelectorAll('.projects-slide');
+      const projectsDots = projectsSlider.querySelectorAll('.projects-dot');
+      const projectsPrev = projectsSlider.querySelector('.projects-control.prev');
+      const projectsNext = projectsSlider.querySelector('.projects-control.next');
+      let projectsIndex = 0;
+      let projectsTimer;
+
+      const showProjectSlide = (index) => {
+        projectsIndex = (index + projectsSlides.length) % projectsSlides.length;
+        projectsTrack.style.transform = `translateX(-${projectsIndex * 100}%)`;
+        projectsDots.forEach((dot, i) => dot.classList.toggle('active', i === projectsIndex));
+      };
+      const startProjectsSlider = () => {
+        clearInterval(projectsTimer);
+        projectsTimer = setInterval(() => showProjectSlide(projectsIndex + 1), 5000);
+      };
+      projectsPrev.addEventListener('click', () => { showProjectSlide(projectsIndex - 1); startProjectsSlider(); });
+      projectsNext.addEventListener('click', () => { showProjectSlide(projectsIndex + 1); startProjectsSlider(); });
+      projectsDots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { showProjectSlide(i); startProjectsSlider(); });
+      });
+      startProjectsSlider();
+    }
+
+    // Contador de clientes
     const clientsCount = document.getElementById('clientsCount');
     if (clientsCount) {
       const targetClients = 350;
