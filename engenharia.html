@@ -8,7 +8,7 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
   <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), interest-cohort=()">
-  <title>Engenharia imobiliária</title>
+  <title>Engenharia e Modelos de Projetos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --gold:#d4a441; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); }
@@ -27,6 +27,7 @@
     .nav a:hover { color:var(--accent); }
     .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; border-radius:12px; font-weight:700; border:none; cursor:pointer; }
     .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
+    .btn-sm { padding:0.6rem 1rem; font-size:0.85rem; border-radius:8px; width:100%; margin-top:0.8rem; text-align:center; }
     .menu-dropdown { display:none; position:relative; }
     .menu-toggle { display:inline-flex; align-items:center; gap:0.6rem; background:var(--primary); color:#fff; border:none; border-radius:12px; padding:0.8rem 1.2rem; font-weight:700; cursor:pointer; }
     .menu-options { position:absolute; right:0; top:calc(100% + 12px); min-width:260px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:0.6rem; display:none; z-index:25; }
@@ -48,6 +49,20 @@
     .icon { width:56px; height:56px; display:inline-flex; align-items:center; justify-content:center; background:rgba(14,165,233,0.12); color:var(--accent-dark); border-radius:14px; font-size:1.4rem; margin-bottom:1rem; }
     .box h3 { margin-bottom:0.6rem; }
     .box p { color:var(--muted); }
+
+    /* ====== GRADE DE PROJETOS ====== */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; }
+    .project-card { background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); transition:transform 0.2s ease, box-shadow 0.2s ease; display:flex; flex-direction:column; justify-content:space-between; }
+    .project-card:hover { transform:translateY(-4px); box-shadow:0 22px 45px rgba(15,23,42,0.12); }
+    .project-image { height:190px; background-size:cover; background-position:center; position:relative; }
+    .project-tag { position:absolute; top:12px; left:12px; background:rgba(15,23,42,0.88); color:#fff; padding:0.35rem 0.75rem; border-radius:999px; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; }
+    .project-body { padding:1.2rem; display:flex; flex-direction:column; flex-grow:1; justify-content:space-between; }
+    .project-body h3 { font-size:1.15rem; margin-bottom:0.4rem; color:var(--primary); line-height:1.3; }
+    .project-body p { color:var(--muted); font-size:0.88rem; line-height:1.4; }
+    .project-body .specs { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1rem 0 0.4rem; font-size:0.82rem; color:var(--muted); border-top:1px solid var(--line); padding-top:0.8rem; }
+    .project-body .specs span { display:flex; align-items:center; gap:0.35rem; font-weight:600; }
+    .project-body .specs i { color:var(--accent-dark); }
+
     .steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.3rem; }
     .step { background:#fff; border:1px solid var(--line); border-radius:18px; padding:1.5rem; box-shadow:var(--shadow); }
     .step-number { width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--gold), #f3d279); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; font-weight:800; margin-bottom:1rem; }
@@ -77,7 +92,7 @@
   <div class="topbar">
     <div class="container">
       <span>Engenharia e viabilidade</span>
-      <span>📍 Itapeva e região</span>
+      <span>Itapeva e região</span>
     </div>
   </div>
 
@@ -155,6 +170,122 @@
       </div>
     </section>
 
+    <!-- ====== SEÇÃO COM 20 MODELOS DE PROJETOS ====== -->
+    <section class="section" style="background:#edf3f9;">
+      <div class="container">
+        <div class="section-head">
+          <h2>Catálogo de Projetos e Modelos</h2>
+          <p>Inspire-se em 20 modelos arquitetônicos prontos para construção e financiamento na região de Itapeva.</p>
+        </div>
+        <div class="projects-grid">
+
+          <!-- Modelo 1 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/1200x/4c/dc/28/4cdc28f95989aeeff4b7747ce9297efd.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>1. Casa Térrea Compacta</h3>
+              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV.</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
+                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 40m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+          <!-- Modelo 2 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/3a/11/b2/3a11b25ee61584b778a54d676d61de5b.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>2. Casa Térrea Compacta</h3>
+              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV..</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 2 Qts (1 Suíte)</span>
+                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 44m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+          <!-- Modelo 3 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/b8/1e/b0/b81eb004ee7e441281ab3e344202124b.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>3. Casa Térrea Compacta</h3>
+              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV.</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 2 Qts</span>
+                <span><i class="fa-solid fa-car"></i> 1 Vaga coberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 60m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+          <!-- Modelo 4 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/ac/55/83/ac5583ced12fb1939cc269a2ebaedf91.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>4. Projeto em terreno com aclive</h3>
+              <p>Aproveitamento de terreno em aclive.</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
+                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 50m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+          <!-- Modelo 5 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/1c/69/c3/1c69c307cee3e38c33e1b6b6db7157cf.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>5. Alto Padrão</h3>
+              <p>Alto Padrão</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 3 Qts (1 Suíte)</span>
+                <span><i class="fa-solid fa-car"></i> 2 Vagas coberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 130m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+          <!-- Modelo 6 -->
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/5d/96/d9/5d96d960327c9c51660f23df5afaca6a.jpg');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>6. Alto Padrão</h3>
+              <p>Projeto otimizado de Alto Padrão.</p>
+              <div class="specs">
+                <span><i class="fa-solid fa-bed"></i> 3 Suítes</span>
+                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
+                <span><i class="fa-solid fa-car"></i> 2 Vagas coberta</span>
+                <span><i class="fa-solid fa-ruler-horizontal"></i> 250m²</span>
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -192,7 +323,7 @@
               <li><a href="financiamento.html">Financiamento</a></li>
             </ul>
           </div>
-          <a href="index.html#contato" class="btn btn-primary">Falar com especialista</a>
+          <a href="index.html#contato" class="btn btn-primary">Atenção: para compras, entre em contato diretamente com um de nossos especialistas.</a>
         </div>
       </div>
     </section>
@@ -222,7 +353,7 @@
           <li><a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99703-8249</a></li>
           <li><a href="https://wa.me/5515998541107" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99854-1107</a></li>
           <li><a href="mailto:vendasimobimoveis@gmail.com"><i class="fa-solid fa-envelope"></i> vendasimobimoveis@gmail.com</a></li>
-          <li>📍 Itapeva - SP</li>
+          <li>Itapeva - SP</li>
         </ul>
       </div>
     </div>
