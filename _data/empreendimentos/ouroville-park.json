@@ -1,0 +1,12 @@
+{
+  "titulo": "Empreendimento OuroVille Park",
+  "preco": "Lotes a partir de R$ 170.000,00",
+  "localizacao": "Itapeva-SP",
+  "imagem": "https://i.pinimg.com/736x/c4/7e/f8/c47ef840e046db72f130e8645e4e2fc4.jpg",
+  "descricao": "Lotes a partir de 250m². Disponível Financiamento Caixa.",
+  "metragem": "250m²",
+  "destaque1": "Lotes a partir de 250m²",
+  "destaque2": "Disponível Financiamento Caixa",
+  "financiavel": true,
+  "ordem": 4
+}
