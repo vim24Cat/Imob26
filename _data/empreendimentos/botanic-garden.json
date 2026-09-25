@@ -1,0 +1,12 @@
+{
+  "titulo": "Condomínio Botanic Garden",
+  "preco": "Lotes a partir de R$ 190.000,00",
+  "localizacao": "Itapeva-SP",
+  "imagem": "https://i.pinimg.com/736x/4a/ca/43/4aca43b8535b80c38939aceb9d0cc4a4.jpg",
+  "descricao": "Lotes a partir de 250m². Disponível Financiamento Caixa.",
+  "metragem": "250m²",
+  "destaque1": "Lotes a partir de 250m²",
+  "destaque2: "Disponível Financiamento Caixa",
+  "financiavel": true,
+  "ordem": 2
+}
