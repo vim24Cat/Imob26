@@ -287,7 +287,7 @@
             </button>
             <nav class="menu-options" id="menuOptions">
               <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-              <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+              <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Empreendimentos</a>
               <a href="index.html#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
               <a href="terreno-construcao.html"><i class="fa-solid fa-house-chimney"></i> Terreno + construção</a>
               <a href="financiamento.html"><i class="fa-solid fa-building-columns"></i> Financiamento</a>
@@ -306,7 +306,7 @@
             <h1>Empreendimentos com potencial e segurança.</h1>
             <p>Terrenos, construção, financiamento e engenharia para quem quer investir com mais confiança na região de Itapeva.</p>
             <div class="hero-actions">
-              <a href="empreendimentos.html" class="btn btn-primary">Ver opções</a>
+              <a href="empreendimentos.html" class="btn btn-primary">Ver Empreendimentos</a>
               <a href="financiamento.html" class="btn btn-light">Financiamento</a>
             </div>
             <div class="stats">
@@ -319,7 +319,6 @@
           <div class="hero-card">
             <div class="search-box">
               <div class="search-grid">
-                <!-- ADICIONADO ID AQUI -->
                 <select id="filtroTipo">
                   <option value="">Tipo de imóvel</option>
                   <option value="empreendimento">Empreendimento</option>
@@ -327,7 +326,6 @@
                   <option value="residencial">Residencial</option>
                   <option value="comercial">Imóvel Comercial</option>
                 </select>
-                <!-- ADICIONADO ID AQUI -->
                 <select id="filtroLocal">
                   <option value="">Localização</option>
                   <option value="itapeva">Itapeva - SP</option>
@@ -335,7 +333,6 @@
                   <option value="interior">Interior de São Paulo</option>
                   <option value="proximos">Municípios próximos</option>
                 </select>
-                <!-- ADICIONADO ID AQUI -->
                 <select id="filtroValor">
                   <option value="">Faixa de valor</option>
                   <option value="ate300">Até R$ 300 mil</option>
@@ -343,7 +340,6 @@
                   <option value="700a1.5">R$ 700 mil a 1,5 mi</option>
                   <option value="acima1.5">Acima de R$ 1,5 mi</option>
                 </select>
-                <!-- ADICIONADO ID AQUI -->
                 <select id="filtroStatus">
                   <option value="">Status</option>
                   <option value="disponivel">Disponível</option>
@@ -351,7 +347,6 @@
                   <option value="pronto">Pronto para morar</option>
                   <option value="lancamento">Lançamento</option>
                 </select>
-                <!-- MUDADO DE <a> PARA <button> E ADICIONADO ID -->
                 <button id="btnBuscar" class="btn btn-primary wide" type="button">Buscar oportunidade</button>
               </div>
             </div>
@@ -782,7 +777,7 @@
         <h4>Menu</h4>
         <ul>
           <li><a href="index.html">Início</a></li>
-          <li><a href="empreendimentos.html">Comprar</a></li>
+          <li><a href="empreendimentos.html">Empreendimentos</a></li>
           <li><a href="index.html#terrenos">Terreno financiável</a></li>
           <li><a href="terreno-construcao.html">Terreno + construção</a></li>
           <li><a href="financiamento.html">Financiamento</a></li>
@@ -908,19 +903,16 @@
       countClients();
     })();
 
-    // --- NOVO SCRIPT: LÓGICA DE BUSCA ---
     (function() {
       const btnBuscar = document.getElementById('btnBuscar');
       
       if (btnBuscar) {
         btnBuscar.addEventListener('click', function() {
-          // 1. Capturar os valores selecionados
           const tipo = document.getElementById('filtroTipo').value;
           const local = document.getElementById('filtroLocal').value;
           const valor = document.getElementById('filtroValor').value;
           const status = document.getElementById('filtroStatus').value;
 
-          // 2. Construir a URL com parâmetros (Query String)
           const params = new URLSearchParams();
           
           if (tipo) params.append('tipo', tipo);
@@ -928,7 +920,6 @@
           if (valor) params.append('valor', valor);
           if (status) params.append('status', status);
 
-          // 3. Redirecionar o usuário
           const queryString = params.toString();
           const urlDestino = 'empreendimentos.html' + (queryString ? '?' + queryString : '');
           
@@ -936,7 +927,6 @@
         });
       }
 
-      // Opcional: Preencher os campos se o usuário voltar para a página inicial
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('tipo')) document.getElementById('filtroTipo').value = urlParams.get('tipo');
       if (urlParams.has('local')) document.getElementById('filtroLocal').value = urlParams.get('local');
