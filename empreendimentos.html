@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
@@ -73,6 +73,9 @@
     .footer-col a:hover { color:#fff; }
     .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; }
 
+    .loading-msg { grid-column:1/-1; text-align:center; padding:2rem; color:var(--muted); }
+    .error-msg { grid-column:1/-1; text-align:center; padding:2rem; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:14px; }
+
     @media (max-width:1000px) { .nav { display:none; } .menu-dropdown { display:block; } .navbar > .btn-primary { display:none; } }
     @media (max-width:760px) { .cta { flex-direction:column; align-items:flex-start; } .footer-grid { grid-template-columns:1fr; } }
     body, body * { user-select:none; }
@@ -137,86 +140,8 @@
           <p>Escolha a melhor opção para comprar, morar ou investir com segurança e visão de mercado.</p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/01/03/9a/01039a5151789e44579a0e057616b9f9.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Empreendimento Portal Itapeva</span>
-              <div class="price"> </div>
-              <h3>Lotes a partir de R$ 65.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-bath"></i> Lotes a partir de 175m²</span>
-                <span><i class="fa-solid fa-ruler-combined"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/4a/ca/43/4aca43b8535b80c38939aceb9d0cc4a4.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Condomínio Botanic Garden</span>
-              <div class="price"> </div>
-              <h3>Lotes a partir de R$190.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-house"></i> Lotes a partir de 250m²</span>
-                <span><i class="fa-solid fa-chart-line"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
-            <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/b4/75/87/b475875cbaf48ef5d0c26f03fff7200e.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Empreendimento Vem Viver</span>
-              <h3>Lotes a partir de R$  124.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-house"></i> Lotes a partir de 250m²</span>
-                <span><i class="fa-solid fa-chart-line"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
-           <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/c4/7e/f8/c47ef840e046db72f130e8645e4e2fc4.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Empreendimento OuroVille Park</span>
-              <h3>Lotes a partir de R$  170.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-house"></i> Lotes a partir de 250m²</span>
-                <span><i class="fa-solid fa-chart-line"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
-           <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/4c/80/f1/4c80f1cadbe9fe150ab7f5a30f53da9b.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Empreendimento Jardim Europa IV</span>
-              <div class="price"> </div>
-              <h3>Lotes a partir de R$  160.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-house"></i> Lotes a partir de 250m²</span>
-                <span><i class="fa-solid fa-chart-line"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://i.pinimg.com/736x/9c/95/e2/9c95e252bca495e8fb881937c36a9732.jpg');"></div>
-            <div class="card-body">
-              <span class="tag">Empreendimento Reserva Itapeva </span>
-              <div class="price"> </div>
-              <h3>Lotes a partir de R$90.000,00</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i>Itapeva-SP</div>
-              <div class="details">
-                <span><i class="fa-solid fa-building"></i> Area de lazer completa</span>
-                <span><i class="fa-solid fa-briefcase"></i> Lotes a partir de 175m²</span>
-                <span><i class="fa-solid fa-chart-line"></i> Disponivel Financiamento Caixa</span>
-              </div>
-            </div>
-          </article>
+        <div class="cards" id="cardsContainer">
+          <p class="loading-msg">Carregando empreendimentos...</p>
         </div>
       </div>
     </section>
@@ -292,17 +217,17 @@
     </div>
     <div class="container copy">© 2026</div>
   </footer>
+
   <script>
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-    document.addEventListener('dragstart', (event) => event.preventDefault());
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
-      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
-    });
-    const menuDropdown = document.getElementById('menuDropdown');
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuDropdown && menuToggle) {
+    'use strict';
+
+    // ============================================
+    // MENU DROPDOWN
+    // ============================================
+    (function () {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (!menuDropdown || !menuToggle) return;
       menuToggle.addEventListener('click', () => {
         const isOpen = menuDropdown.classList.toggle('open');
         menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -313,7 +238,119 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         }
       });
-    }
+    })();
+
+    // ============================================
+    // CARREGAR EMPREENDIMENTOS DINAMICAMENTE
+    // ============================================
+    (function () {
+      const container = document.getElementById('cardsContainer');
+      if (!container) return;
+
+      // Escapa HTML para evitar problemas de segurança
+      const escapeHtml = (text) => {
+        if (text === null || text === undefined) return '';
+        return String(text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      };
+
+      // Monta o HTML de um card
+      const criarCard = (item) => {
+        const tag = escapeHtml(item.titulo || '');
+        const preco = escapeHtml(item.preco || '');
+        const descricao = escapeHtml(item.descricao || '');
+        const localizacao = escapeHtml(item.localizacao || 'Itapeva-SP');
+        const imagem = escapeHtml(item.imagem || '');
+        const destaque1 = escapeHtml(item.destaque1 || item.metragem || '');
+        const destaque2 = escapeHtml(item.destaque2 || (item.financiavel ? 'Disponível Financiamento Caixa' : ''));
+
+        return `
+          <article class="card">
+            <div class="card-image" style="background-image:url('${imagem}');"></div>
+            <div class="card-body">
+              <span class="tag">${tag}</span>
+              <div class="price">${preco}</div>
+              <h3>${descricao.split('.')[0] || ''}</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> ${localizacao}</div>
+              <div class="details">
+                ${destaque1 ? `<span><i class="fa-solid fa-house"></i> ${destaque1}</span>` : ''}
+                ${destaque2 ? `<span><i class="fa-solid fa-chart-line"></i> ${destaque2}</span>` : ''}
+              </div>
+            </div>
+          </article>
+        `;
+      };
+
+      // Mostra erro amigável
+      const mostrarErro = (msg) => {
+        container.innerHTML = `
+          <div class="error-msg">
+            <p>${escapeHtml(msg)}</p>
+            <p style="margin-top:0.5rem;">Entre em contato pelo WhatsApp para mais informações.</p>
+          </div>
+        `;
+      };
+
+      // Processo principal
+      const carregar = async () => {
+        try {
+          // 1. Baixa o índice
+          const respIndice = await fetch('_data/empreendimentos.json');
+          if (!respIndice.ok) throw new Error('Não foi possível carregar o índice de empreendimentos.');
+          const listaArquivos = await respIndice.json();
+
+          if (!Array.isArray(listaArquivos) || listaArquivos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum empreendimento cadastrado no momento.</p>';
+            return;
+          }
+
+          // 2. Baixa cada arquivo
+          const promessas = listaArquivos.map(async (nomeArquivo) => {
+            try {
+              const resp = await fetch('_data/empreendimentos/' + nomeArquivo);
+              if (!resp.ok) return null;
+              return await resp.json();
+            } catch (e) {
+              return null;
+            }
+          });
+
+          const resultados = await Promise.all(promessas);
+          const empreendimentos = resultados.filter(item => item !== null);
+
+          if (empreendimentos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum empreendimento disponível no momento.</p>';
+            return;
+          }
+
+          // 3. Ordena por "ordem"
+          empreendimentos.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
+
+          // 4. Monta os cards
+          container.innerHTML = empreendimentos.map(criarCard).join('');
+        } catch (erro) {
+          console.error('Erro ao carregar empreendimentos:', erro);
+          mostrarErro('Não foi possível carregar os empreendimentos agora.');
+        }
+      };
+
+      carregar();
+    })();
+
+    // ============================================
+    // PROTEÇÕES (contextmenu, drag, teclas)
+    // ============================================
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+    document.addEventListener('dragstart', (event) => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
+      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
+    });
   </script>
 </body>
 </html>
