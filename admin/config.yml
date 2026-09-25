@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: pt
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "empreendimentos"
+    label: "Empreendimentos"
+    label_singular: "Empreendimento"
+    folder: "_data/empreendimentos"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["titulo", "ordem"]
+    summary: "{{titulo}} — {{preco}}"
+    fields:
+      - { label: "Nome do Empreendimento", name: "titulo", widget: "string" }
+      - { label: "Preço (texto livre)", name: "preco", widget: "string", hint: "Ex: Lotes a partir de R$ 65.000,00" }
+      - { label: "Localização", name: "localizacao", widget: "string", default: "Itapeva-SP" }
+      - { label: "Imagem Principal", name: "imagem", widget: "image" }
+      - { label: "Descrição Curta", name: "descricao", widget: "text" }
+      - { label: "Metragem", name: "metragem", widget: "string", required: false }
+      - { label: "Destaque 1", name: "destaque1", widget: "string", required: false }
+      - { label: "Destaque 2", name: "destaque2", widget: "string", required: false }
+      - { label: "Disponível para financiamento?", name: "financiavel", widget: "boolean", default: true }
+      - { label: "Ordem de exibição", name: "ordem", widget: "number", default: 99, required: false }
+
+  - name: "projetos"
+    label: "Modelos de Projetos"
+    label_singular: "Projeto"
+    folder: "_data/projetos"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["titulo", "ordem"]
+    summary: "{{titulo}} ({{metragem}})"
+    fields:
+      - { label: "Título do Projeto", name: "titulo", widget: "string" }
+      - { label: "Metragem", name: "metragem", widget: "string", hint: "Ex: 40m²" }
+      - { label: "Quartos", name: "quartos", widget: "string", hint: "Ex: 2 Quartos" }
+      - { label: "Vagas", name: "vagas", widget: "string", hint: "Ex: 1 Vaga coberta" }
+      - { label: "Imagem", name: "imagem", widget: "image" }
+      - { label: "Descrição", name: "descricao", widget: "text" }
+      - { label: "Ordem de exibição", name: "ordem", widget: "number", default: 99, required: false }
+
+  - name: "config"
+    label: "Configurações do Site"
+    files:
+      - name: "geral"
+        label: "Contato e Rodapé"
+        file: "_data/config.json"
+        fields:
+          - { label: "Nome da Empresa", name: "nome_empresa", widget: "string", default: "Imob Imóveis" }
+          - { label: "WhatsApp Principal (só números)", name: "whatsapp1", widget: "string", default: "5515997038249" }
+          - { label: "WhatsApp Secundário (só números)", name: "whatsapp2", widget: "string", default: "5515998541107" }
+          - { label: "E-mail de contato", name: "email", widget: "string", default: "vendasimobimoveis@gmail.com" }
+          - { label: "Cidade/UF", name: "cidade", widget: "string", default: "Itapeva - SP" }
+          - { label: "Texto do rodapé", name: "rodape", widget: "text", default: "Especialistas em projetos imobiliários, financiamento, terrenos com construção e investimento em imóveis com alto potencial em Itapeva e região." }
