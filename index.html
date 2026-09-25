@@ -4,23 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    object-src 'none';
-    script-src 'self' 'nonce-INDEX2026SECURE';
-    style-src 'self' 'nonce-INDEX2026SECURE' https://cdnjs.cloudflare.com;
-    img-src 'self' data: https://images.unsplash.com;
-    font-src 'self' https://cdnjs.cloudflare.com data:;
-    media-src 'self';
-    connect-src 'self';
-    manifest-src 'self';
-    worker-src 'self';
-    upgrade-insecure-requests;
-    block-all-mixed-content;
-  ">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com https://i.pinimg.com; font-src 'self' https://cdnjs.cloudflare.com data:; media-src 'self'; connect-src 'self'; upgrade-insecure-requests;">
 
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -35,7 +19,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer">
 
-  <style nonce="INDEX2026SECURE">
+  <style>
     :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --gold:#d4a441; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); --radius:18px; }
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
@@ -339,7 +323,7 @@
             <div class="featured-track">
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/4a/ca/43/4aca43b8535b80c38939aceb9d0cc4a4.jpg');">
                     <span class="tag">Botanic Garden</span>
                   </div>
                   <div class="property-body">
@@ -351,7 +335,7 @@
               </div>
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/c4/7e/f8/c47ef840e046db72f130e8645e4e2fc4.jpg');">
                     <span class="tag">Ouroville Park</span>
                   </div>
                   <div class="property-body">
@@ -363,7 +347,7 @@
               </div>
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/01/03/9a/01039a5151789e44579a0e057616b9f9.jpg');">
                     <span class="tag">Portal Itapeva</span>
                   </div>
                   <div class="property-body">
@@ -375,7 +359,7 @@
               </div>
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/b4/75/87/b475875cbaf48ef5d0c26f03fff7200e.jpg');">
                     <span class="tag">Vem Viver</span>
                   </div>
                   <div class="property-body">
@@ -387,7 +371,7 @@
               </div>
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/9c/95/e2/9c95e252bca495e8fb881937c36a9732.jpg');">
                     <span class="tag">Reserva Itapeva</span>
                   </div>
                   <div class="property-body">
@@ -399,7 +383,7 @@
               </div>
               <div class="featured-slide">
                 <article class="property-card">
-                  <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80');">
+                  <div class="property-image" style="background-image:url('https://i.pinimg.com/736x/4c/80/f1/4c80f1cadbe9fe150ab7f5a30f53da9b.jpg');">
                     <span class="tag">Jardim Europa IV</span>
                   </div>
                   <div class="property-body">
@@ -445,7 +429,7 @@
               <div class="projects-track">
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/1200x/4c/dc/28/4cdc28f95989aeeff4b7747ce9297efd.jpg');">
                       <span class="tag">40m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -457,7 +441,7 @@
                 </div>
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/3a/11/b2/3a11b25ee61584b778a54d676d61de5b.jpg');">
                       <span class="tag">44m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -469,7 +453,7 @@
                 </div>
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/b8/1e/b0/b81eb004ee7e441281ab3e344202124b.jpg');">
                       <span class="tag">60m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -481,7 +465,7 @@
                 </div>
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/ac/55/83/ac5583ced12fb1939cc269a2ebaedf91.jpg');">
                       <span class="tag">50m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -493,7 +477,7 @@
                 </div>
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/1c/69/c3/1c69c307cee3e38c33e1b6b6db7157cf.jpg');">
                       <span class="tag">130m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -505,7 +489,7 @@
                 </div>
                 <div class="projects-slide">
                   <article class="project-mini">
-                    <div class="project-mini-image" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80');">
+                    <div class="project-mini-image" style="background-image:url('https://i.pinimg.com/736x/5d/96/d9/5d96d960327c9c51660f23df5afaca6a.jpg');">
                       <span class="tag">250m²</span>
                     </div>
                     <div class="project-mini-body">
@@ -773,7 +757,7 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <script nonce="INDEX2026SECURE">
+  <script>
     'use strict';
 
     (function () {
