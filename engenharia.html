@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
@@ -50,7 +50,6 @@
     .box h3 { margin-bottom:0.6rem; }
     .box p { color:var(--muted); }
 
-    /* ====== GRADE DE PROJETOS ====== */
     .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; }
     .project-card { background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); transition:transform 0.2s ease, box-shadow 0.2s ease; display:flex; flex-direction:column; justify-content:space-between; }
     .project-card:hover { transform:translateY(-4px); box-shadow:0 22px 45px rgba(15,23,42,0.12); }
@@ -81,6 +80,9 @@
     .footer-col a, .footer-col li { color:rgba(255,255,255,0.7); }
     .footer-col a:hover { color:#fff; }
     .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; }
+
+    .loading-msg { grid-column:1/-1; text-align:center; padding:2rem; color:var(--muted); }
+    .error-msg { grid-column:1/-1; text-align:center; padding:2rem; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:14px; }
 
     @media (max-width:1000px) { .nav { display:none; } .menu-dropdown { display:block; } }
     @media (max-width:760px) { .cta { flex-direction:column; align-items:flex-start; } .footer-grid { grid-template-columns:1fr; } }
@@ -170,118 +172,14 @@
       </div>
     </section>
 
-    <!-- ====== SEÇÃO COM 20 MODELOS DE PROJETOS ====== -->
     <section class="section" style="background:#edf3f9;">
       <div class="container">
         <div class="section-head">
           <h2>Catálogo de Projetos e Modelos</h2>
-          <p>Inspire-se em 20 modelos arquitetônicos prontos para construção e financiamento na região de Itapeva.</p>
+          <p>Inspire-se em modelos arquitetônicos prontos para construção e financiamento na região de Itapeva.</p>
         </div>
-        <div class="projects-grid">
-
-          <!-- Modelo 1 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/1200x/4c/dc/28/4cdc28f95989aeeff4b7747ce9297efd.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>1. Casa Térrea Compacta</h3>
-              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV.</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
-                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 40m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
-          <!-- Modelo 2 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/3a/11/b2/3a11b25ee61584b778a54d676d61de5b.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>2. Casa Térrea Compacta</h3>
-              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV..</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 2 Qts (1 Suíte)</span>
-                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 44m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
-          <!-- Modelo 3 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/b8/1e/b0/b81eb004ee7e441281ab3e344202124b.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>3. Casa Térrea Compacta</h3>
-              <p>Projeto otimizado para pequenos lotes com baixo custo de construção Financie MCMV.</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 2 Qts</span>
-                <span><i class="fa-solid fa-car"></i> 1 Vaga coberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 60m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
-          <!-- Modelo 4 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/ac/55/83/ac5583ced12fb1939cc269a2ebaedf91.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>4. Projeto em terreno com aclive</h3>
-              <p>Aproveitamento de terreno em aclive.</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
-                <span><i class="fa-solid fa-car"></i> 1 Vaga aberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 50m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
-          <!-- Modelo 5 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/1c/69/c3/1c69c307cee3e38c33e1b6b6db7157cf.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>5. Alto Padrão</h3>
-              <p>Alto Padrão</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 3 Qts (1 Suíte)</span>
-                <span><i class="fa-solid fa-car"></i> 2 Vagas coberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 130m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
-          <!-- Modelo 6 -->
-          <article class="project-card">
-            <div class="project-image" style="background-image:url('https://i.pinimg.com/736x/5d/96/d9/5d96d960327c9c51660f23df5afaca6a.jpg');">
-              <span class="project-tag">Projeto</span>
-            </div>
-            <div class="project-body">
-              <h3>6. Alto Padrão</h3>
-              <p>Projeto otimizado de Alto Padrão.</p>
-              <div class="specs">
-                <span><i class="fa-solid fa-bed"></i> 3 Suítes</span>
-                <span><i class="fa-solid fa-bed"></i> 2 Quartos</span>
-                <span><i class="fa-solid fa-car"></i> 2 Vagas coberta</span>
-                <span><i class="fa-solid fa-ruler-horizontal"></i> 250m²</span>
-              </div>
-              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
-            </div>
-          </article>
-
+        <div class="projects-grid" id="projectsContainer">
+          <p class="loading-msg">Carregando projetos...</p>
         </div>
       </div>
     </section>
@@ -323,7 +221,7 @@
               <li><a href="financiamento.html">Financiamento</a></li>
             </ul>
           </div>
-          <a href="index.html#contato" class="btn btn-primary">Atenção: para compras, entre em contato diretamente com um de nossos especialistas.</a>
+          <a href="index.html#contato" class="btn btn-primary">Falar com especialista</a>
         </div>
       </div>
     </section>
@@ -359,17 +257,14 @@
     </div>
     <div class="container copy">© 2026</div>
   </footer>
+
   <script>
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-    document.addEventListener('dragstart', (event) => event.preventDefault());
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
-      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
-    });
-    const menuDropdown = document.getElementById('menuDropdown');
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuDropdown && menuToggle) {
+    'use strict';
+
+    (function () {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (!menuDropdown || !menuToggle) return;
       menuToggle.addEventListener('click', () => {
         const isOpen = menuDropdown.classList.toggle('open');
         menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -380,7 +275,106 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         }
       });
-    }
+    })();
+
+    (function () {
+      const container = document.getElementById('projectsContainer');
+      if (!container) return;
+
+      const escapeHtml = (text) => {
+        if (text === null || text === undefined) return '';
+        return String(text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      };
+
+      const criarCard = (item) => {
+        const titulo = escapeHtml(item.titulo || '');
+        const metragem = escapeHtml(item.metragem || '');
+        const quartos = escapeHtml(item.quartos || '');
+        const vagas = escapeHtml(item.vagas || '');
+        const imagem = escapeHtml(item.imagem || '');
+        const descricao = escapeHtml(item.descricao || '');
+
+        return `
+          <article class="project-card">
+            <div class="project-image" style="background-image:url('${imagem}');">
+              <span class="project-tag">Projeto</span>
+            </div>
+            <div class="project-body">
+              <h3>${titulo}</h3>
+              <p>${descricao}</p>
+              <div class="specs">
+                ${quartos ? `<span><i class="fa-solid fa-bed"></i> ${quartos}</span>` : ''}
+                ${vagas ? `<span><i class="fa-solid fa-car"></i> ${vagas}</span>` : ''}
+                ${metragem ? `<span><i class="fa-solid fa-ruler-horizontal"></i> ${metragem}</span>` : ''}
+              </div>
+              <a href="index.html#contato" class="btn btn-primary btn-sm">Compre esse projeto</a>
+            </div>
+          </article>
+        `;
+      };
+
+      const mostrarErro = (msg) => {
+        container.innerHTML = `
+          <div class="error-msg">
+            <p>${escapeHtml(msg)}</p>
+            <p style="margin-top:0.5rem;">Entre em contato pelo WhatsApp para mais informações.</p>
+          </div>
+        `;
+      };
+
+      const carregar = async () => {
+        try {
+          const respIndice = await fetch('_data/projetos.json');
+          if (!respIndice.ok) throw new Error('Não foi possível carregar o índice de projetos.');
+          const listaArquivos = await respIndice.json();
+
+          if (!Array.isArray(listaArquivos) || listaArquivos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum projeto cadastrado no momento.</p>';
+            return;
+          }
+
+          const promessas = listaArquivos.map(async (nomeArquivo) => {
+            try {
+              const resp = await fetch('_data/projetos/' + nomeArquivo);
+              if (!resp.ok) return null;
+              return await resp.json();
+            } catch (e) {
+              return null;
+            }
+          });
+
+          const resultados = await Promise.all(promessas);
+          const projetos = resultados.filter(item => item !== null);
+
+          if (projetos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum projeto disponível no momento.</p>';
+            return;
+          }
+
+          projetos.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
+
+          container.innerHTML = projetos.map(criarCard).join('');
+        } catch (erro) {
+          console.error('Erro ao carregar projetos:', erro);
+          mostrarErro('Não foi possível carregar os projetos agora.');
+        }
+      };
+
+      carregar();
+    })();
+
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+    document.addEventListener('dragstart', (event) => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
+      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
+    });
   </script>
 </body>
 </html>
