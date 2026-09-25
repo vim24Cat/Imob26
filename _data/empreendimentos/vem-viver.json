@@ -1,0 +1,12 @@
+{
+  "titulo": "Empreendimento Vem Viver",
+  "preco": "Lotes a partir de R$ 124.000,00",
+  "localizacao": "Itapeva-SP",
+  "imagem": "https://i.pinimg.com/736x/b4/75/87/b475875cbaf48ef5d0c26f03fff7200e.jpg",
+  "descricao": "Lotes a partir de 250m². Disponível Financiamento Caixa.",
+  "metragem": "250m²",
+  "destaque1": "Lotes a partir de 250m²",
+  "destaque2": "Disponível Financiamento Caixa",
+  "financiavel": true,
+  "ordem": 3
+}
