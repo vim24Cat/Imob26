@@ -1,12 +1,12 @@
 {
-  "titulo": "Empreendimento Jardim Europa IV",
-  "preco": "Lotes a partir de R$ 160.000,00",
-  "localizacao": "Itapeva-SP",
-  "imagem": "https://i.pinimg.com/736x/4c/80/f1/4c80f1cadbe9fe150ab7f5a30f53da9b.jpg",
-  "descricao": "Lotes a partir de 250m². Disponível Financiamento Caixa.",
   "metragem": "250m²",
+  "descricao": "Lotes a partir de 250m². Disponível Financiamento Caixa.",
+  "ordem": 5,
+  "localizacao": "Itapeva-SP",
   "destaque1": "Lotes a partir de 250m²",
+  "preco": "Lotes a partir de R$ 155.000,00",
   "destaque2": "Disponível Financiamento Caixa",
-  "financiavel": true,
-  "ordem": 5
+  "imagem": "https://i.pinimg.com/736x/4c/80/f1/4c80f1cadbe9fe150ab7f5a30f53da9b.jpg",
+  "titulo": "Empreendimento Jardim Europa IV",
+  "financiavel": true
 }
