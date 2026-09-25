@@ -1,12 +1,12 @@
 {
-  "titulo": "Empreendimento Portal Itapeva",
-  "preco": "Lotes a partir de R$ 65.000,00",
-  "localizacao": "Itapeva-SP",
-  "imagem": "https://i.pinimg.com/736x/01/03/9a/01039a5151789e44579a0e057616b9f9.jpg",
-  "descricao": "Lotes a partir de 175m². Disponível Financiamento Caixa.",
   "metragem": "175m²",
+  "descricao": "Lotes a partir de 175m². Disponível Financiamento Caixa.",
+  "ordem": 1,
+  "localizacao": "Itapeva-SP",
   "destaque1": "Lotes a partir de 175m²",
+  "preco": "Lotes a partir de R$ 60.000,00",
   "destaque2": "Disponível Financiamento Caixa",
-  "financiavel": true,
-  "ordem": 1
+  "imagem": "https://i.pinimg.com/736x/01/03/9a/01039a5151789e44579a0e057616b9f9.jpg",
+  "titulo": "Empreendimento Portal Itapeva",
+  "financiavel": true
 }
