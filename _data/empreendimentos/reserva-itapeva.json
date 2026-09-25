@@ -1,0 +1,12 @@
+{
+  "titulo": "Empreendimento Reserva Itapeva",
+  "preco": "Lotes a partir de R$ 90.000,00",
+  "localizacao": "Itapeva-SP",
+  "imagem": "https://i.pinimg.com/736x/9c/95/e2/9c95e252bca495e8fb881937c36a9732.jpg",
+  "descricao": "Área de lazer completa. Lotes a partir de 175m². Disponível Financiamento Caixa.",
+  "metragem": "175m²",
+  "destaque1": "Área de lazer completa",
+  "destaque2": "Lotes a partir de 175m²",
+  "financiavel": true,
+  "ordem": 6
+}
