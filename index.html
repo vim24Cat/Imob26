@@ -218,55 +218,55 @@
       .clients-row .featured-metric p { max-width: 100%; }
     }
     @media (max-width:700px) {
-  .search-grid { grid-template-columns:1fr; }
-  .section { padding:4rem 0; }
+      .search-grid { grid-template-columns:1fr; }
+      .section { padding:4rem 0; }
 
-  .menu-options {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    height: 100%;
-    max-height: 100%;
-    border: none;
-    border-radius: 0;
-    padding: 5.5rem 1.5rem 2rem;
-    overflow-y: auto;
-    z-index: 100;
-    box-shadow: none;
-  }
+      .menu-options {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 100%;
+        max-height: 100%;
+        border: none;
+        border-radius: 0;
+        padding: 5.5rem 1.5rem 2rem;
+        overflow-y: auto;
+        z-index: 100;
+        box-shadow: none;
+      }
 
-  .menu-options a {
-    font-size: 1.05rem !important;
-    padding: 1rem 1.2rem !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-    line-height: 1.35 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.85rem !important;
-  }
+      .menu-options a {
+        font-size: 1.05rem !important;
+        padding: 1rem 1.2rem !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        line-height: 1.35 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.85rem !important;
+      }
 
-  .menu-options a i {
-    font-size: 1.15rem !important;
-    width: 24px !important;
-    flex-shrink: 0 !important;
-    text-align: center;
-  }
+      .menu-options a i {
+        font-size: 1.15rem !important;
+        width: 24px !important;
+        flex-shrink: 0 !important;
+        text-align: center;
+      }
 
-  .menu-options .divider {
-    margin: 0.7rem 0.3rem !important;
-  }
+      .menu-options .divider {
+        margin: 0.7rem 0.3rem !important;
+      }
 
-  .menu-toggle {
-    position: relative;
-    z-index: 110;
-  }
-}
+      .menu-toggle {
+        position: relative;
+        z-index: 110;
+      }
+    }
   </style>
 </head>
 <body>
@@ -319,35 +319,40 @@
           <div class="hero-card">
             <div class="search-box">
               <div class="search-grid">
-                <select>
-                  <option>Tipo de imóvel</option>
-                  <option>Empreendimento</option>
-                  <option>Terreno + Construção</option>
-                  <option>Residencial</option>
-                  <option>Imóvel Comercial</option>
+                <!-- ADICIONADO ID AQUI -->
+                <select id="filtroTipo">
+                  <option value="">Tipo de imóvel</option>
+                  <option value="empreendimento">Empreendimento</option>
+                  <option value="terreno-construcao">Terreno + Construção</option>
+                  <option value="residencial">Residencial</option>
+                  <option value="comercial">Imóvel Comercial</option>
                 </select>
-                <select>
-                  <option>Localização</option>
-                  <option>Itapeva - SP</option>
-                  <option>Região de Itapeva</option>
-                  <option>Interior de São Paulo</option>
-                  <option>Municípios próximos</option>
+                <!-- ADICIONADO ID AQUI -->
+                <select id="filtroLocal">
+                  <option value="">Localização</option>
+                  <option value="itapeva">Itapeva - SP</option>
+                  <option value="regiao">Região de Itapeva</option>
+                  <option value="interior">Interior de São Paulo</option>
+                  <option value="proximos">Municípios próximos</option>
                 </select>
-                <select>
-                  <option>Faixa de valor</option>
-                  <option>Até R$ 300 mil</option>
-                  <option>R$ 300 mil a 700 mil</option>
-                  <option>R$ 700 mil a 1,5 mi</option>
-                  <option>Acima de R$ 1,5 mi</option>
+                <!-- ADICIONADO ID AQUI -->
+                <select id="filtroValor">
+                  <option value="">Faixa de valor</option>
+                  <option value="ate300">Até R$ 300 mil</option>
+                  <option value="300a700">R$ 300 mil a 700 mil</option>
+                  <option value="700a1.5">R$ 700 mil a 1,5 mi</option>
+                  <option value="acima1.5">Acima de R$ 1,5 mi</option>
                 </select>
-                <select>
-                  <option>Status</option>
-                  <option>Disponível</option>
-                  <option>Em construção</option>
-                  <option>Pronto para morar</option>
-                  <option>Lançamento</option>
+                <!-- ADICIONADO ID AQUI -->
+                <select id="filtroStatus">
+                  <option value="">Status</option>
+                  <option value="disponivel">Disponível</option>
+                  <option value="construcao">Em construção</option>
+                  <option value="pronto">Pronto para morar</option>
+                  <option value="lancamento">Lançamento</option>
                 </select>
-                <a href="empreendimentos.html" class="btn btn-primary wide">Buscar oportunidade</a>
+                <!-- MUDADO DE <a> PARA <button> E ADICIONADO ID -->
+                <button id="btnBuscar" class="btn btn-primary wide" type="button">Buscar oportunidade</button>
               </div>
             </div>
           </div>
@@ -901,6 +906,42 @@
         if (currentClients < targetClients) requestAnimationFrame(countClients);
       };
       countClients();
+    })();
+
+    // --- NOVO SCRIPT: LÓGICA DE BUSCA ---
+    (function() {
+      const btnBuscar = document.getElementById('btnBuscar');
+      
+      if (btnBuscar) {
+        btnBuscar.addEventListener('click', function() {
+          // 1. Capturar os valores selecionados
+          const tipo = document.getElementById('filtroTipo').value;
+          const local = document.getElementById('filtroLocal').value;
+          const valor = document.getElementById('filtroValor').value;
+          const status = document.getElementById('filtroStatus').value;
+
+          // 2. Construir a URL com parâmetros (Query String)
+          const params = new URLSearchParams();
+          
+          if (tipo) params.append('tipo', tipo);
+          if (local) params.append('local', local);
+          if (valor) params.append('valor', valor);
+          if (status) params.append('status', status);
+
+          // 3. Redirecionar o usuário
+          const queryString = params.toString();
+          const urlDestino = 'empreendimentos.html' + (queryString ? '?' + queryString : '');
+          
+          window.location.href = urlDestino;
+        });
+      }
+
+      // Opcional: Preencher os campos se o usuário voltar para a página inicial
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('tipo')) document.getElementById('filtroTipo').value = urlParams.get('tipo');
+      if (urlParams.has('local')) document.getElementById('filtroLocal').value = urlParams.get('local');
+      if (urlParams.has('valor')) document.getElementById('filtroValor').value = urlParams.get('valor');
+      if (urlParams.has('status')) document.getElementById('filtroStatus').value = urlParams.get('status');
     })();
   </script>
 </body>
