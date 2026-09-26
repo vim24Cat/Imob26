@@ -1,13 +1,13 @@
 {
-  "titulo": "Lote — Jardim Europa IV",
-  "preco": "R$ 160.000,00",
-  "localizacao": "Empreendimento Jardim Europa IV",
-  "imagem": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
-  "descricao": "Lote de 250m² com localização estratégica.",
   "metragem": "250m²",
+  "descricao": "Lote de 250m² com localização estratégica.",
+  "ordem": 4,
+  "localizacao": "Empreendimento Jardim Europa IV",
   "destaque1": "Localização estratégica",
+  "preco": "A partir de R$ 160.000,00",
   "destaque2": "Financiamento Caixa",
+  "imagem": "https://i.pinimg.com/736x/4c/80/f1/4c80f1cadbe9fe150ab7f5a30f53da9b.jpg",
+  "titulo": "Lote — Jardim Europa IV",
   "financiavel": true,
-  "destaque_home": false,
-  "ordem": 4
+  "destaque_home": false
 }
