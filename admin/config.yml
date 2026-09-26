@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: vim24Cat/Imob26
   branch: main
+  base_url: https://SEU-OAUTH-AQUI.workers.dev
 
 locale: pt
 
@@ -49,6 +51,30 @@ collections:
       - { label: "Vagas", name: "vagas", widget: "string", hint: "Ex: 1 Vaga coberta" }
       - { label: "Imagem", name: "imagem", widget: "image" }
       - { label: "Descrição", name: "descricao", widget: "text" }
+      - { label: "Ordem de exibição", name: "ordem", widget: "number", default: 99, required: false }
+
+  - name: "terrenos"
+    label: "Terrenos Disponíveis"
+    label_singular: "Terreno"
+    folder: "_data/terrenos"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    sortable_fields: ["titulo", "ordem"]
+    summary: "{{titulo}} — {{preco}}"
+    fields:
+      - { label: "Título do Terreno", name: "titulo", widget: "string" }
+      - { label: "Preço (texto livre)", name: "preco", widget: "string", hint: "Ex: R$ 65.000,00" }
+      - { label: "Localização", name: "localizacao", widget: "string", default: "Itapeva-SP" }
+      - { label: "Imagem Principal", name: "imagem", widget: "image" }
+      - { label: "Descrição Curta", name: "descricao", widget: "text" }
+      - { label: "Metragem", name: "metragem", widget: "string", required: false }
+      - { label: "Destaque 1", name: "destaque1", widget: "string", required: false }
+      - { label: "Destaque 2", name: "destaque2", widget: "string", required: false }
+      - { label: "Disponível para financiamento?", name: "financiavel", widget: "boolean", default: true }
+      - { label: "Mostrar na página inicial?", name: "destaque_home", widget: "boolean", default: false }
       - { label: "Ordem de exibição", name: "ordem", widget: "number", default: 99, required: false }
 
   - name: "config"
