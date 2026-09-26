@@ -74,10 +74,12 @@
     .footer-col a:hover { color:#fff; }
     .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; }
 
+    .loading-msg { grid-column:1/-1; text-align:center; padding:2rem; color:var(--muted); }
+    .error-msg { grid-column:1/-1; text-align:center; padding:2rem; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:14px; }
+
     @media (max-width:1000px) { .nav { display:none; } .menu-dropdown { display:block; } .navbar > .btn-primary { display:none; } }
     @media (max-width:760px) { .cta { flex-direction:column; align-items:flex-start; } .footer-grid { grid-template-columns:1fr; } }
 
-    /* Dropdown mobile em tela cheia */
     @media (max-width:700px) {
       .menu-options {
         position:fixed;
@@ -159,122 +161,8 @@
           <p>Escolha o terreno ideal para o seu objetivo. Todos com possibilidade de financiamento e condições especiais.</p>
         </div>
 
-        <div class="cards">
-
-          <!-- TERRENO 1 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 65.000,00</div>
-              <h3>Lote com declive — Portal Itapeva</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Portal Itapeva</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 175m²</span>
-                <span><i class="fa-solid fa-road"></i> À vista ou financiamento</span>
-                <span><i class="fa-solid fa-arrow-trend-up"></i> Potencial de valorização</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20com%20declive%20-%20Portal%20Itapeva%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
-          <!-- TERRENO 2 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 90.000,00</div>
-              <h3>Lote em condomínio — Reserva Itapeva</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Reserva Itapeva</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 175m²</span>
-                <span><i class="fa-solid fa-tree"></i> Área de lazer completa</span>
-                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20em%20condom%C3%ADnio%20-%20Reserva%20Itapeva%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
-          <!-- TERRENO 3 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 124.000,00</div>
-              <h3>Lote amplo — Vem Viver</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Vem Viver</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
-                <span><i class="fa-solid fa-house"></i> Ideal para construção</span>
-                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20amplo%20-%20Vem%20Viver%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
-          <!-- TERRENO 4 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 160.000,00</div>
-              <h3>Lote — Jardim Europa IV</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Jardim Europa IV</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
-                <span><i class="fa-solid fa-road"></i> Localização estratégica</span>
-                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20Jardim%20Europa%20IV%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
-          <!-- TERRENO 5 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 170.000,00</div>
-              <h3>Lote — OuroVille Park</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento OuroVille Park</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
-                <span><i class="fa-solid fa-arrow-trend-up"></i> Alto potencial de valorização</span>
-                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20OuroVille%20Park%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
-          <!-- TERRENO 6 -->
-          <article class="card">
-            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');"></div>
-            <div class="card-body">
-              <span class="tag">Terreno</span>
-              <div class="price">R$ 190.000,00</div>
-              <h3>Lote — Condomínio Botanic Garden</h3>
-              <div class="location"><i class="fa-solid fa-location-dot"></i> Condomínio Botanic Garden</div>
-              <div class="details">
-                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
-                <span><i class="fa-solid fa-tree"></i> Condomínio fechado</span>
-                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
-              </div>
-              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20Condom%C3%ADnio%20Botanic%20Garden%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
-                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
-              </a>
-            </div>
-          </article>
-
+        <div class="cards" id="cardsContainer">
+          <p class="loading-msg">Carregando terrenos...</p>
         </div>
       </div>
     </section>
@@ -351,6 +239,105 @@
           menuToggle.setAttribute('aria-expanded', 'false');
         }
       });
+    })();
+
+    (function () {
+      const container = document.getElementById('cardsContainer');
+      if (!container) return;
+
+      const escapeHtml = (text) => {
+        if (text === null || text === undefined) return '';
+        return String(text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      };
+
+      const criarCard = (item) => {
+        const titulo = escapeHtml(item.titulo || '');
+        const preco = escapeHtml(item.preco || '');
+        const localizacao = escapeHtml(item.localizacao || 'Itapeva-SP');
+        const imagem = escapeHtml(item.imagem || '');
+        const metragem = escapeHtml(item.metragem || '');
+        const destaque1 = escapeHtml(item.destaque1 || '');
+        const destaque2 = escapeHtml(item.destaque2 || '');
+        const financiavel = item.financiavel ? 'Financiamento disponível' : '';
+
+        const textoWhats = encodeURIComponent('Olá! Tenho interesse no terreno "' + (item.titulo || '') + '".');
+        const linkWhats = 'https://wa.me/5515997038249?text=' + textoWhats;
+
+        return `
+          <article class="card">
+            <div class="card-image" style="background-image:url('${imagem}');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              ${preco ? `<div class="price">${preco}</div>` : ''}
+              ${titulo ? `<h3>${titulo}</h3>` : ''}
+              <div class="location"><i class="fa-solid fa-location-dot"></i> ${localizacao}</div>
+              <div class="details">
+                ${metragem ? `<span><i class="fa-solid fa-ruler"></i> ${metragem}</span>` : ''}
+                ${destaque1 ? `<span><i class="fa-solid fa-star"></i> ${destaque1}</span>` : ''}
+                ${destaque2 ? `<span><i class="fa-solid fa-circle-check"></i> ${destaque2}</span>` : ''}
+                ${financiavel ? `<span><i class="fa-solid fa-building-columns"></i> ${financiavel}</span>` : ''}
+              </div>
+              <a href="${linkWhats}" target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+        `;
+      };
+
+      const mostrarErro = (msg) => {
+        container.innerHTML = `
+          <div class="error-msg">
+            <p>${escapeHtml(msg)}</p>
+            <p style="margin-top:0.5rem;">Entre em contato pelo WhatsApp para mais informações.</p>
+          </div>
+        `;
+      };
+
+      const carregar = async () => {
+        try {
+          const respIndice = await fetch('_data/terrenos.json');
+          if (!respIndice.ok) throw new Error('Não foi possível carregar o índice de terrenos.');
+          const listaArquivos = await respIndice.json();
+
+          if (!Array.isArray(listaArquivos) || listaArquivos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum terreno cadastrado no momento.</p>';
+            return;
+          }
+
+          const promessas = listaArquivos.map(async (nomeArquivo) => {
+            try {
+              const resp = await fetch('_data/terrenos/' + nomeArquivo);
+              if (!resp.ok) return null;
+              return await resp.json();
+            } catch (e) {
+              return null;
+            }
+          });
+
+          const resultados = await Promise.all(promessas);
+          const terrenos = resultados.filter(item => item !== null);
+
+          if (terrenos.length === 0) {
+            container.innerHTML = '<p class="loading-msg">Nenhum terreno disponível no momento.</p>';
+            return;
+          }
+
+          terrenos.sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
+
+          container.innerHTML = terrenos.map(criarCard).join('');
+        } catch (erro) {
+          console.error('Erro ao carregar terrenos:', erro);
+          mostrarErro('Não foi possível carregar os terrenos agora.');
+        }
+      };
+
+      carregar();
     })();
 
     document.addEventListener('contextmenu', (event) => event.preventDefault());
