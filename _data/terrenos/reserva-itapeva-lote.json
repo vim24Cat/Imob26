@@ -1,12 +1,12 @@
 {
   "metragem": "175m²",
-  "descricao": "Lote de 175m² em condomínio com área de lazer completa.",
+  "descricao": "Lote de 175m² em condomínio com área de lazer completa. Lotes a partir de R$ 90.000,00",
   "ordem": 2,
   "localizacao": "Empreendimento Reserva Itapeva",
   "destaque1": "Área de lazer completa",
   "preco": "R$ 90.000,00",
   "destaque2": "Financiamento Caixa",
-  "imagem": "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80",
+  "imagem": "https://i.pinimg.com/736x/9c/95/e2/9c95e252bca495e8fb881937c36a9732.jpg",
   "titulo": "Lote — Reserva Itapeva",
   "financiavel": true,
   "destaque_home": true
