@@ -1,13 +1,13 @@
 {
-  "titulo": "Lote com declive — Portal Itapeva",
-  "preco": "R$ 65.000,00",
-  "localizacao": "Empreendimento Portal Itapeva",
-  "imagem": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
-  "descricao": "Lote de 175m² com declive, à vista ou financiamento.",
   "metragem": "175m²",
+  "descricao": "Lote de 175m² com declive, à vista ou financiamento.",
+  "ordem": 1,
+  "localizacao": "Empreendimento Portal Itapeva",
   "destaque1": "À vista ou financiamento",
+  "preco": "R$ 65.000,00",
   "destaque2": "Potencial de valorização",
+  "imagem": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
+  "titulo": "Quadra R, Lote 23  — Portal Itapeva",
   "financiavel": true,
-  "destaque_home": true,
-  "ordem": 1
+  "destaque_home": true
 }
