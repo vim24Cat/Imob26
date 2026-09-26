@@ -1,0 +1,13 @@
+{
+  "titulo": "Lote — OuroVille Park",
+  "preco": "R$ 170.000,00",
+  "localizacao": "Empreendimento OuroVille Park",
+  "imagem": "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80",
+  "descricao": "Lote de 250m² com alto potencial de valorização.",
+  "metragem": "250m²",
+  "destaque1": "Alto potencial de valorização",
+  "destaque2": "Financiamento Caixa",
+  "financiavel": true,
+  "destaque_home": false,
+  "ordem": 5
+}
