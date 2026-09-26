@@ -1,0 +1,13 @@
+{
+  "titulo": "Lote com declive — Portal Itapeva",
+  "preco": "R$ 65.000,00",
+  "localizacao": "Empreendimento Portal Itapeva",
+  "imagem": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
+  "descricao": "Lote de 175m² com declive, à vista ou financiamento.",
+  "metragem": "175m²",
+  "destaque1": "À vista ou financiamento",
+  "destaque2": "Potencial de valorização",
+  "financiavel": true,
+  "destaque_home": true,
+  "ordem": 1
+}
