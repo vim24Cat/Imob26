@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https:; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https:; upgrade-insecure-requests">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta name="Permissions-Policy" content="geolocation=(), camera=(), microphone=(), interest-cohort=()">
+  <title>Terrenos disponíveis</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --primary:#0f172a; --primary-soft:#1e293b; --accent:#0ea5e9; --accent-dark:#0369a1; --gold:#d4a441; --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#64748b; --line:#dfe7f1; --success:#16a34a; --shadow:0 18px 40px rgba(15,23,42,0.08); --radius:18px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Segoe UI', Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    a { text-decoration:none; }
+    img { max-width:100%; display:block; }
+    .container { width:min(1200px, calc(100% - 32px)); margin:0 auto; }
+    .topbar { background:#0a1427; color:#dfeaf8; font-size:0.8rem; padding:0.7rem 0; }
+    .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+    header { position:sticky; top:0; z-index:20; background:rgba(255,255,255,0.96); backdrop-filter:blur(8px); border-bottom:1px solid rgba(15,23,42,0.06); }
+    .navbar { display:flex; align-items:center; justify-content:space-between; min-height:78px; gap:1rem; }
+    .logo { font-size:1.6rem; font-weight:800; color:var(--primary); letter-spacing:-0.04em; }
+    .logo span { color:var(--accent); }
+    .nav { display:flex; list-style:none; gap:1.2rem; flex-wrap:wrap; }
+    .nav a { color:var(--primary-soft); font-weight:600; font-size:0.95rem; }
+    .nav a:hover { color:var(--accent); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.85rem 1.4rem; border-radius:12px; font-weight:700; border:none; cursor:pointer; }
+    .btn-primary { background:linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; box-shadow:0 12px 20px rgba(14,165,233,0.25); }
+    .btn-whats { background:linear-gradient(135deg, #25d366, #128c4a); color:#fff; box-shadow:0 12px 20px rgba(37,211,102,0.25); width:100%; margin-top:1rem; }
+    .menu-dropdown { display:none; position:relative; }
+    .menu-toggle { display:inline-flex; align-items:center; gap:0.6rem; background:var(--primary); color:#fff; border:none; border-radius:12px; padding:0.8rem 1.2rem; font-weight:700; cursor:pointer; }
+    .menu-options { position:absolute; right:0; top:calc(100% + 12px); min-width:260px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:0.6rem; display:none; z-index:25; }
+    .menu-dropdown.open .menu-options { display:block; }
+    .menu-options a { display:flex; align-items:center; gap:0.7rem; padding:0.8rem 0.9rem; border-radius:10px; color:var(--primary-soft); font-weight:600; }
+    .menu-options a i { width:18px; text-align:center; color:var(--accent-dark); flex-shrink:0; }
+    .menu-options a:hover { background:rgba(14,165,233,0.08); color:var(--accent-dark); }
+    .menu-options .divider { height:1px; background:var(--line); margin:0.4rem 0.3rem; }
+
+    .hero { padding:5rem 0 3rem; background:linear-gradient(120deg, rgba(15,23,42,0.9), rgba(15,23,42,0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; color:#fff; }
+    .hero h1 { font-size:clamp(2.3rem, 4vw, 4rem); letter-spacing:-0.04em; margin-bottom:1rem; }
+    .hero p { color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:700px; }
+    .eyebrow { display:inline-flex; background:rgba(255,255,255,0.12); border-radius:999px; padding:0.45rem 0.85rem; font-size:0.8rem; font-weight:700; text-transform:uppercase; margin-bottom:1rem; letter-spacing:0.04em; }
+
+    .section { padding:4rem 0; }
+    .section-head { text-align:center; margin-bottom:2.2rem; }
+    .section-head h2 { font-size:clamp(2rem, 3vw, 2.8rem); letter-spacing:-0.04em; margin-bottom:0.7rem; }
+    .section-head p { color:var(--muted); max-width:700px; margin:0 auto; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.4rem; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
+    .card-image { height:220px; background-size:cover; background-position:center; }
+    .card-body { padding:1.4rem; display:flex; flex-direction:column; flex-grow:1; }
+    .tag { display:inline-block; background:rgba(15,23,42,0.9); color:#fff; padding:0.4rem 0.7rem; border-radius:999px; font-size:0.72rem; font-weight:700; margin-bottom:0.8rem; align-self:flex-start; }
+    .price { font-size:1.5rem; color:var(--accent-dark); font-weight:800; margin-bottom:0.6rem; }
+    .card-body h3 { margin-bottom:0.5rem; }
+    .location { color:var(--muted); display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; }
+    .details { display:flex; flex-direction:column; gap:0.6rem; color:var(--muted); font-size:0.85rem; border-top:1px solid var(--line); padding-top:0.9rem; margin-top:auto; }
+    .details span { display:flex; align-items:flex-start; gap:0.5rem; }
+    .details i { color:var(--accent-dark); margin-top:0.2rem; }
+
+    .cta { background:linear-gradient(135deg, var(--primary), #183966); color:#fff; border-radius:24px; padding:2rem; display:flex; justify-content:space-between; align-items:center; gap:1.5rem; box-shadow:var(--shadow); flex-wrap:wrap; }
+    .cta h3 { font-size:clamp(1.8rem, 2.5vw, 2.5rem); margin-bottom:0.5rem; }
+    .cta-links { list-style:none; display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.8rem; }
+    .cta-links a { color:#fff; font-weight:600; }
+    .cta-links a:hover { color:var(--gold); }
+
+    footer { background:#091421; color:rgba(255,255,255,0.8); padding:4rem 0 2rem; margin-top:4rem; }
+    .footer-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:2rem; }
+    .footer-col h4 { color:#fff; margin-bottom:1rem; }
+    .footer-col ul { list-style:none; display:grid; gap:0.7rem; }
+    .footer-col a, .footer-col li { color:rgba(255,255,255,0.7); }
+    .footer-col a:hover { color:#fff; }
+    .copy { border-top:1px solid rgba(255,255,255,0.12); margin-top:2rem; padding-top:1.5rem; text-align:center; }
+
+    @media (max-width:1000px) { .nav { display:none; } .menu-dropdown { display:block; } .navbar > .btn-primary { display:none; } }
+    @media (max-width:760px) { .cta { flex-direction:column; align-items:flex-start; } .footer-grid { grid-template-columns:1fr; } }
+
+    /* Dropdown mobile em tela cheia */
+    @media (max-width:700px) {
+      .menu-options {
+        position:fixed;
+        top:0; left:0; right:0; bottom:0;
+        width:100% !important; min-width:0 !important; max-width:100% !important;
+        height:100%; max-height:100%;
+        border:none; border-radius:0;
+        padding:5.5rem 1.5rem 2rem;
+        overflow-y:auto;
+        z-index:100;
+        box-shadow:none;
+      }
+      .menu-options a { font-size:1.05rem !important; padding:1rem 1.2rem !important; white-space:normal !important; word-break:break-word !important; line-height:1.35 !important; display:flex !important; align-items:center !important; gap:0.85rem !important; }
+      .menu-options a i { font-size:1.15rem !important; width:24px !important; flex-shrink:0 !important; text-align:center; }
+      .menu-options .divider { margin:0.7rem 0.3rem !important; }
+      .menu-toggle { position:relative; z-index:110; }
+    }
+
+    body, body * { user-select:none; }
+    img, video { -webkit-user-drag:none; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>Terrenos disponíveis</span>
+      <span>Itapeva e região</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo"> <span> </span></a>
+      <ul class="nav">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="empreendimentos.html">Empreendimentos</a></li>
+        <li><a href="terrenos-disponiveis.html">Terrenos disponíveis</a></li>
+        <li><a href="terreno-construcao.html">Terreno + construção</a></li>
+        <li><a href="financiamento.html">Financiamento</a></li>
+        <li><a href="engenharia.html">Engenharia</a></li>
+        <li><a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">Simular poder de compra</a></li>
+        <li><a href="index.html#sobre">Sobre nós</a></li>
+      </ul>
+      <a href="index.html#contato" class="btn btn-primary">Contato</a>
+
+      <div class="menu-dropdown" id="menuDropdown">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuOptions">
+          <i class="fa-solid fa-bars"></i> Menu
+        </button>
+        <nav class="menu-options" id="menuOptions">
+          <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+          <a href="empreendimentos.html"><i class="fa-solid fa-cart-shopping"></i> Empreendimentos</a>
+          <a href="index.html#terrenos"><i class="fa-solid fa-map"></i> Terreno financiável</a>
+          <a href="terreno-construcao.html"><i class="fa-solid fa-house-chimney"></i> Terreno + construção</a>
+          <a href="financiamento.html"><i class="fa-solid fa-building-columns"></i> Financiamento</a>
+          <a href="engenharia.html"><i class="fa-solid fa-helmet-safety"></i> Engenharia</a>
+          <div class="divider"></div>
+          <a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-calculator"></i> Simular poder de compra</a>
+          <a href="index.html#sobre"><i class="fa-solid fa-users"></i> Sobre nós</a>
+          <a href="index.html#contato"><i class="fa-solid fa-phone"></i> Contato</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Terrenos</div>
+        <h1>Terrenos disponíveis para comprar, construir ou investir.</h1>
+        <p>Confira nossa lista atualizada de terrenos em Itapeva e região, com opções financiáveis, localização estratégica e potencial de valorização.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Terrenos disponíveis</h2>
+          <p>Escolha o terreno ideal para o seu objetivo. Todos com possibilidade de financiamento e condições especiais.</p>
+        </div>
+
+        <div class="cards">
+
+          <!-- TERRENO 1 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 65.000,00</div>
+              <h3>Lote com declive — Portal Itapeva</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Portal Itapeva</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 175m²</span>
+                <span><i class="fa-solid fa-road"></i> À vista ou financiamento</span>
+                <span><i class="fa-solid fa-arrow-trend-up"></i> Potencial de valorização</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20com%20declive%20-%20Portal%20Itapeva%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+          <!-- TERRENO 2 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 90.000,00</div>
+              <h3>Lote em condomínio — Reserva Itapeva</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Reserva Itapeva</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 175m²</span>
+                <span><i class="fa-solid fa-tree"></i> Área de lazer completa</span>
+                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20em%20condom%C3%ADnio%20-%20Reserva%20Itapeva%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+          <!-- TERRENO 3 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 124.000,00</div>
+              <h3>Lote amplo — Vem Viver</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Vem Viver</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
+                <span><i class="fa-solid fa-house"></i> Ideal para construção</span>
+                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20amplo%20-%20Vem%20Viver%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+          <!-- TERRENO 4 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 160.000,00</div>
+              <h3>Lote — Jardim Europa IV</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento Jardim Europa IV</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
+                <span><i class="fa-solid fa-road"></i> Localização estratégica</span>
+                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20Jardim%20Europa%20IV%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+          <!-- TERRENO 5 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 170.000,00</div>
+              <h3>Lote — OuroVille Park</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Empreendimento OuroVille Park</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
+                <span><i class="fa-solid fa-arrow-trend-up"></i> Alto potencial de valorização</span>
+                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20OuroVille%20Park%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+          <!-- TERRENO 6 -->
+          <article class="card">
+            <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body">
+              <span class="tag">Terreno</span>
+              <div class="price">R$ 190.000,00</div>
+              <h3>Lote — Condomínio Botanic Garden</h3>
+              <div class="location"><i class="fa-solid fa-location-dot"></i> Condomínio Botanic Garden</div>
+              <div class="details">
+                <span><i class="fa-solid fa-ruler"></i> 250m²</span>
+                <span><i class="fa-solid fa-tree"></i> Condomínio fechado</span>
+                <span><i class="fa-solid fa-building-columns"></i> Financiamento Caixa</span>
+              </div>
+              <a href="https://wa.me/5515997038249?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20terreno%20%22Lote%20-%20Condom%C3%ADnio%20Botanic%20Garden%22." target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+                <i class="fa-brands fa-whatsapp"></i> Tenho interesse
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h3>Não encontrou o terreno ideal?</h3>
+            <ul class="cta-links">
+              <li><a href="empreendimentos.html">Empreendimentos</a></li>
+              <li><a href="terreno-construcao.html">Terreno + construção</a></li>
+              <li><a href="financiamento.html">Financiamento</a></li>
+            </ul>
+          </div>
+          <a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Falar com especialista</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Atendimento imobiliário</h4>
+        <p>Terrenos, empreendimentos, construção e financiamento em Itapeva e região.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="empreendimentos.html">Empreendimentos</a></li>
+          <li><a href="terrenos-disponiveis.html">Terrenos disponíveis</a></li>
+          <li><a href="terreno-construcao.html">Terreno + construção</a></li>
+          <li><a href="financiamento.html">Financiamento</a></li>
+          <li><a href="engenharia.html">Engenharia</a></li>
+          <li><a href="https://simuladorhabitacao.caixa.gov.br/calculadora" target="_blank" rel="noopener noreferrer">Simular poder de compra</a></li>
+          <li><a href="index.html#sobre">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5515997038249" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99703-8249</a></li>
+          <li><a href="https://wa.me/5515998541107" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp: (15) 99854-1107</a></li>
+          <li><a href="mailto:vendasimobimoveis@gmail.com"><i class="fa-solid fa-envelope"></i> vendasimobimoveis@gmail.com</a></li>
+          <li>Itapeva - SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copy">© 2026</div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    (function () {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (!menuDropdown || !menuToggle) return;
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuDropdown.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      document.addEventListener('click', (event) => {
+        if (!menuDropdown.contains(event.target)) {
+          menuDropdown.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          menuDropdown.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+    document.addEventListener('dragstart', (event) => event.preventDefault());
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      if ((event.ctrlKey || event.metaKey) && ['c','x','u','s','p'].includes(key)) event.preventDefault();
+      if (event.key === 'F12' || ((event.ctrlKey || event.metaKey) && event.shiftKey && ['i','j','c'].includes(key))) event.preventDefault();
+    });
+  </script>
+</body>
+</html>
