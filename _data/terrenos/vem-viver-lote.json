@@ -1,13 +1,13 @@
 {
-  "titulo": "Lote amplo — Vem Viver",
-  "preco": "R$ 124.000,00",
-  "localizacao": "Empreendimento Vem Viver",
-  "imagem": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80",
-  "descricao": "Lote de 250m² ideal para construção.",
   "metragem": "250m²",
+  "descricao": "Lote de 250m² ideal para construção.",
+  "ordem": 3,
+  "localizacao": "Empreendimento Vem Viver",
   "destaque1": "Ideal para construção",
+  "preco": "A partir de R$ 124.000,00",
   "destaque2": "Financiamento Caixa",
+  "imagem": "https://i.pinimg.com/736x/b4/75/87/b475875cbaf48ef5d0c26f03fff7200e.jpg",
+  "titulo": "Lote amplo — Vem Viver",
   "financiavel": true,
-  "destaque_home": true,
-  "ordem": 3
+  "destaque_home": true
 }
