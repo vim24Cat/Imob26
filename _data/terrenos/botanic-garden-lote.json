@@ -1,0 +1,13 @@
+{
+  "titulo": "Lote — Condomínio Botanic Garden",
+  "preco": "R$ 190.000,00",
+  "localizacao": "Condomínio Botanic Garden",
+  "imagem": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80",
+  "descricao": "Lote de 250m² em condomínio fechado.",
+  "metragem": "250m²",
+  "destaque1": "Condomínio fechado",
+  "destaque2": "Financiamento Caixa",
+  "financiavel": true,
+  "destaque_home": false,
+  "ordem": 6
+}
